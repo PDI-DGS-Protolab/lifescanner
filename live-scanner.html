@@ -12,12 +12,14 @@
 
 	</head>
 	<body ng-app="">
-		<div ng-controller="ListCtrl">
-			<section>
-				<header>
-					<input id="search-field" type="text" ng-model="searchParameter"/> 
+		<div id="container" ng-controller="ListCtrl">
+			<header>
+				<div id="top-menu">
+					<input id="search-field" type="search" ng-model="searchParameter"/> 
 					<input id="provisionar-button" type="button" value="Provisionar"/>
-				</header>
+				</div>
+			</header>
+			<div id="shows-list-container">
 				<ul>
 					<li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
 						<div class="show-header">
@@ -38,10 +40,9 @@
 						</div>
 					</li>
 				</ul>
-
-				<footer>
-				</footer>
-			</section>
+			</div>
+			<footer>
+			</footer>
 		</div>
 	</body>
 </html>
