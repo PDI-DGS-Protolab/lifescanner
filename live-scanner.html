@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html> 
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<title>LiveScanner</title>
 		<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>-->
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
@@ -15,16 +15,26 @@
 		<div ng-controller="ListCtrl">
 			<section>
 				<header>
-					<input type="text" ng-model="searchParameter"/> 
+					<input id="search-field" type="text" ng-model="searchParameter"/> 
+					<input id="provisionar-button" type="button" value="Provisionar"/>
 				</header>
 				<ul>
 					<li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
 						<div class="show-header">
-							<p class="show-title" ng-click="selectedShow = !selectedShow"> {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}"></p>
+							<input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow" value={{tuple.id}}>
+							<p class="show-title" ng-click="seeShowDescription = !seeShowDescription">
+								{{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
+							</p>
 							
 						</div>
 						<div class="show-description">
-							<p ng-show="selectedShow"> {{ tuple.description }}</p> 
+							<p ng-show="seeShowDescription"> {{ tuple.description }}</p> 
+						</div>
+						<div class="show-comment">
+							<form ng-show="selectedShow">
+								<textarea></textarea>
+								<input class="accept-comment-button" type="button" value="Guardar"/>
+							</form>
 						</div>
 					</li>
 				</ul>

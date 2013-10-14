@@ -1,2 +1,2 @@
-lifescanner
+livescanner
 ===========
