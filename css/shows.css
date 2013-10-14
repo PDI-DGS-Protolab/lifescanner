@@ -1,0 +1,23 @@
+
+.show {
+	display: inline;
+	margin: 0 auto;
+}
+
+.show-header {
+	width: 500px;
+}
+
+.show-title {
+
+}
+
+.show-logo {
+	float: right;
+	width: 30px;
+}
+
+.show-description {
+	width: 500px;
+	padding: 10px;
+}

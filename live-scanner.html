@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta charset="UTF-8">
+		<title>LiveScanner</title>
+		<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>-->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+		<script src="js/dataScanner.js"></script>
+		<script src="js/liveScanner.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/shows.css">
+
+	</head>
+	<body ng-app="">
+		<div ng-controller="ListCtrl">
+			<section>
+				<header>
+					<input type="text" ng-model="searchParameter"/> 
+				</header>
+				<ul>
+					<li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
+						<div class="show-header">
+							<p class="show-title" ng-click="selectedShow = !selectedShow"> {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}"></p>
+							
+						</div>
+						<div class="show-description">
+							<p ng-show="selectedShow"> {{ tuple.description }}</p> 
+						</div>
+					</li>
+				</ul>
+
+				<footer>
+				</footer>
+			</section>
+		</div>
+	</body>
+</html>
