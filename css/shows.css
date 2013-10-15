@@ -1,62 +1,8 @@
-body {
-    background: #ebebeb;
-}
-
-header {
-    background: #2b2b2b;
-    box-shadow: 0 2px 5px 2px #888888;
-    display: block;
-    position: fixed;
-    vertical-align: baseline;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-#top-menu {
-    margin: 20px;
-}
-
-#search-field {
-    border-radius: 5px;
-}
-
-#search-field:focus {
-    outline: none;
-    border-color: #98f1dc;
-}
-
-#provisionar-button {
-    background-color: #ebebeb;
-    border: 0;
-    border-radius: 5px;
-    float: right;
-    font-weight: bold;
-    height: 30px;
-    text-transform: uppercase;
-    transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -webkit-transition: background-color 1000ms linear;
-    width: 120px;
-}
-
-#provisionar-button:hover {
-    background-color: #98f1dc;
-    transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -webkit-transition: background-color 1000ms linear;
-}
-
-#shows-list-container {
+.shows-list-container {
     clear: both;
     display: block;
     margin-top: 80px;
 }
-
 
 li {
     clear: both;
@@ -64,17 +10,18 @@ li {
 }
 
 .show {
-	display: inline;
-	margin: 0 auto;
+    display: inline;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .show-header {
-	width: 500px;
+    width: 500px;
 }
 
 .show-checkbox {
-	float: left;
-	margin-right: 10px;
+    float: left;
+    margin-right: 10px;
 }
 
 .show-title {
@@ -82,12 +29,12 @@ li {
 }
 
 .show-logo {
-	float: right;
-	width: 30px;
+    float: right;
+    width: 30px;
 }
 
 .show-description {
-	float: right;
+    float: right;
     width: 480px;
 }
 
@@ -104,8 +51,10 @@ input[type=text] {
 }
 
 .show textarea {
-    border: solid 2px #c2c2c2;
+    border: solid 2px #a8a8a8;
     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     float: right;
     height: 100px;
     margin-bottom: 5px;
@@ -115,13 +64,56 @@ input[type=text] {
     width: 472px;
 }
 
-.accept-comment-button {
-    border: solid 2px #c2c2c2;
+.show textarea:focus {
+    
+    box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.default-button {
+    border: solid 2px #a8a8a8;
     border-radius: 5px;
-    background-color: #98f1dc;
-    float: right;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     font-weight: bold;
     height: 24px;
     text-transform: uppercase;
     width: 103px;
+}
+
+.accept-comment-button {
+    background-color: rgba(152, 241, 220, .5);
+    float: right;
+}
+
+.accept-comment-button:hover {
+    background-color: rgba(152, 241, 220, 1);
+}
+
+.cancel-comment-button {
+    background-color: #dbdbdb;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.cancel-comment-button:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.modify-comment-button {
+    background-color: rgba(152, 241, 220, .5);
+    float: right;
+    margin-bottom: 10px;
+}
+
+.modify-comment-button:hover {
+    background-color: rgba(152, 241, 220, 1);
+}
+
+.marked-show {
+    background-color: #c2c2c2; 
+    border: solid 2px #a8a8a8;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }

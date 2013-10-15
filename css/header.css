@@ -1,0 +1,54 @@
+body {
+    background: #ebebeb;
+}
+
+header {
+    background: #2b2b2b;
+    box-shadow: 0 2px 5px 2px #888888;
+    display: block;
+    left: 0;
+    position: fixed;
+    top: 0;
+    vertical-align: baseline;
+    width: 100%;
+}
+
+#top-menu {
+    margin: 20px;
+}
+
+#search-field {
+    border-radius: 5px;
+}
+
+#search-field:focus {
+    border-color: #98f1dc;
+    outline: none;
+}
+
+#provisionar-button {
+    background-color: #ebebeb;
+    border: 0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    float: right;
+    font-weight: bold;
+    height: 30px;
+    text-transform: uppercase;
+    transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -webkit-transition: background-color 1000ms linear;
+    width: 120px;
+}
+
+#provisionar-button:hover {
+    background-color: #98f1dc;
+    transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -webkit-transition: background-color 1000ms linear;
+}

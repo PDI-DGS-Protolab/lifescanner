@@ -90,5 +90,92 @@ function getData() {
       } ],
       "synopsis" : [ ]
     }
-  } ]
+  },  {
+    "id" : 15445,
+    "title" : "Lo que el viento se llevó",
+    "description" : "Película de antaño.",
+    "start" : 1380690000000,
+    "end" : 1380702600000,
+    "duration" : 210,
+    "channel" : {
+      "name" : "Cultura",
+      "abbrev" : "CUL",
+      "logo" : "http://greywolf.critter.net/images/gallery/critters/2007-09-14-happy-pink-unicorn.jpg",
+      "fibraLineup" : "2"
+    },
+    "content" : {
+      "idShow" : 2327,
+      "title" : "Lo que el viento se llevó",
+      "description" : "Película de antaño.",
+      "slug" : "legiao-estrangeira",
+      "type" : "Jornalismo",
+      "genre" : "Informativo",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 5205,
+        "url" : "http://5",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  },  {
+    "id" : 16125,
+    "title" : "Notefast",
+    "description" : "Lo último en tecnología móvil.",
+    "start" : 1380690000000,
+    "end" : 1380702600000,
+    "duration" : 210,
+    "channel" : {
+      "name" : "Cultura",
+      "abbrev" : "CUL",
+      "logo" : "https://lh6.ggpht.com/Hli0XuwerfRK1WJucukI7feaNmt7PCjACll_x-enFvp6XOW2wSr6r12XPdpPl5zSdAc=w300",
+      "fibraLineup" : "2"
+    },
+    "content" : {
+      "idShow" : 2327,
+      "title" : "Notefast",
+      "description" : "Lo último en tecnología móvil.",
+      "slug" : "legiao-estrangeira",
+      "type" : "Jornalismo",
+      "genre" : "Informativo",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 5205,
+        "url" : "http://5",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  },  {
+    "id" : 16200,
+    "title" : "inLab FIB",
+    "description" : "Como en casa.",
+    "start" : 1380690000000,
+    "end" : 1380702600000,
+    "duration" : 210,
+    "channel" : {
+      "name" : "Cultura",
+      "abbrev" : "CUL",
+      "logo" : "http://inlab.fib.upc.edu/sites/default/files/logo_inlab.png",
+      "fibraLineup" : "2"
+    },
+    "content" : {
+      "idShow" : 2327,
+      "title" : "inLab FIB",
+      "description" : "Como en casa.",
+      "slug" : "legiao-estrangeira",
+      "type" : "Jornalismo",
+      "genre" : "Informativo",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 5205,
+        "url" : "http://5",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  }  ]
 }
