@@ -65,6 +65,7 @@ function ListCtrl($scope, $http) {
   $scope.unSelect = function(show) {
     var index = $scope.markedShows.indexOf(show);
     if (index > -1) {
+      show.comment = "";
       $scope.markedShows.splice(index, 1);
       $scope.showsPropertiesOfInterest.push(show);
       sortByTitle($scope.showsPropertiesOfInterest);
