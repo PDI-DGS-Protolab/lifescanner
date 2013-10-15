@@ -1,26 +1,36 @@
-function getShowsIdTitleLogoDescription(showsArray) {
+Array.prototype.getShowsIdTitleLogoDescription = function () {
   var result = [];
-  for (show in showsArray) {
-    result.push({id: showsArray[show].id, title: showsArray[show].title, logoUrl: showsArray[show].channel.logo, 
-    description: showsArray[show].description});
+  for (i=0; i<this.length; i++) {
+    result.push({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo, 
+    description: this[i].description});
   }
   return result;
 };
 
-function sortByProperty(showsArray, property) {
-  showsArray.sort(function(showA, showB) {
-    return showA[property].toLowerCase() > showB[property].toLowerCase();
-  });
-  return showsArray;
+Array.prototype.filterByPattern = function(condition, pattern) {
+  var result = [];
+  for (i=0; i<this.length; i++) {
+    if (condition(pattern,this[i])) {
+      result.push(this[i]);
+    }
+  }
+  return result;
 };
 
-function sortByTitle(showsArray) {
-  return sortByProperty(showsArray,"title");
+Array.prototype.sortByProperty = function(property) {
+  this.sort(function(showA, showB) {
+    return showA[property].toLowerCase() > showB[property].toLowerCase();
+  });
+  return this;
+};
+
+Array.prototype.sortByTitle = function() {
+  return this.sortByProperty("title");
 };
 
 var liveScannerApp = angular.module("liveScannerApp", []);
 liveScannerApp.factory("Data", function() {
-  return {searchParameter: "", showsPropertiesOfInterest: sortByTitle(getShowsIdTitleLogoDescription(getData())), 
+  return {searchParameter: "", showsPropertiesOfInterest: getData().getShowsIdTitleLogoDescription().sortByTitle(), 
     markedShows: []};
 });
 
@@ -39,7 +49,6 @@ function HeaderCtrl($scope, Data) {
       for (show in $scope.data.markedShows) {
         result.push({id: $scope.data.markedShows[show], comment: $scope.data.markedShows[show]});
       }
-      console.log(result);
     }
   };
 
@@ -66,9 +75,8 @@ function GenericListCtrl($scope, Data) {
       show.comment = "";
       $scope.data.markedShows.splice(index, 1);
       $scope.data.showsPropertiesOfInterest.push(show);
-      sortByTitle($scope.data.showsPropertiesOfInterest);
+      $scope.data.showsPropertiesOfInterest.sortByTitle();
     }
-    console.log($scope.data.markedShows);
   };
 
   $scope.data = Data;
@@ -82,18 +90,8 @@ function UnMarkedListCtrl($scope, Data) {
     return tmp === pattern.toLowerCase();
   };
 
-  function filterByPattern(condition, pattern, showsArray) {
-    var result = [];
-    for (show in showsArray) {
-      if (condition(pattern,showsArray[show])) {
-        result.push(showsArray[show]);
-      }
-    }
-    return result;
-  };
-
   $scope.getFilteredShows = function() {
-    return filterByPattern(titleMatchesPattern, $scope.data.searchParameter, $scope.data.showsPropertiesOfInterest);
+    return $scope.data.showsPropertiesOfInterest.filterByPattern(titleMatchesPattern, $scope.data.searchParameter);
   };
 };
 
