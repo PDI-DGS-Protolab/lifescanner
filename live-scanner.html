@@ -12,68 +12,68 @@
 		<link rel="stylesheet" type="text/css" href="css/shows.css">
 
 	</head>
-	<body ng-app="">
-		<div id="container" ng-controller="ListCtrl">
-			<header>
-				<div id="top-menu">
-					<input id="search-field" type="search" ng-model="searchParameter"/> 
-					<input id="provisionar-button" type="button" value="{{ getProvisionarButtonText() }}" ng-click="provisionar()"/>
-				</div>
-			</header>
+	<body ng-app="liveScannerApp">
 
-			<div class="shows-list-container">
-				<ul>
-					<li class="show marked-show" ng-repeat="tuple in markedShows" value={{tuple.id}}> 
-						<div class="show-header">
-							<p class="show-title" ng-click="selectedShow = !selectedShow">
-								{{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}"> 
-							</p>
-							<p> {{ tuple.comment }} </p> 
-							<input class="default-button cancel-comment-button" type="button" value="Excluir" ng-click="unSelect(tuple)"/>
-							<input class="default-button modify-comment-button" type="button" value="Modificar" ng-click="seeShowItems = !seeShowItems" ng-show="!seeShowItems"/>
-						</div>
-
-						<div class="show-description">
-							<p ng-show="selectedShow"> {{ tuple.description }}</p> 
-						</div>
-
-						<div class="show-comment">
-							<form ng-show="seeShowItems">
-								<textarea ng-model="comment"> {{ tuple.comment }} </textarea>
-								<input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="changeComment(tuple,comment); seeShowItems = !seeShowItems"/>
-							</form>
-						</div>
-					</li>
-				</ul>
+		<header>
+			<div id="top-menu" ng-controller="HeaderCtrl">
+				<input id="search-field" type="search" ng-model="data.searchParameter"/> 
+				<input id="provisionar-button" type="button" value="{{ getProvisionarButtonText() }}" ng-click="provisionar()"/>
 			</div>
+		</header>
 
-			<div class="shows-list-container">
-				<ul>
-					<li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
-						<div class="show-header">
-							<input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow" value={{tuple.id}}>
-							<p class="show-title" ng-click="seeShowDescription = !seeShowDescription">
-								{{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
-							</p>
-						</div>
+		<div class="shows-list-container" ng-controller="MarkedListCtrl">
+			<ul>
+				<li class="show marked-show" ng-repeat="tuple in data.markedShows" value={{tuple.id}}> 
+					<div class="show-header">
+						<p class="show-title" ng-click="selectedShow = !selectedShow">
+							{{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}"> 
+						</p>
+						<p> {{ tuple.comment }} </p> 
+						<input class="default-button cancel-comment-button" type="button" value="Excluir" ng-click="unSelect(tuple)"/>
+						<input class="default-button modify-comment-button" type="button" value="Modificar" ng-click="seeShowItems = !seeShowItems" ng-show="!seeShowItems"/>
+					</div>
 
-						<div class="show-description">
-							<p ng-show="seeShowDescription"> {{ tuple.description }}</p> 
-						</div>
+					<div class="show-description">
+						<p ng-show="selectedShow"> {{ tuple.description }}</p> 
+					</div>
 
-						<div class="show-comment">
-							<form ng-show="selectedShow">
-								<textarea ng-model="tuple.comment"> {{ tuple.comment }} </textarea>
-								<input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="unSelect(tuple)"/>
-								<input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
-							</form>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-			<footer>
-			</footer>
+					<div class="show-comment">
+						<form ng-show="seeShowItems">
+							<textarea ng-model="comment"> {{ tuple.comment }} </textarea>
+							<input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="changeComment(tuple,comment); seeShowItems = !seeShowItems"/>
+						</form>
+					</div>
+				</li>
+			</ul>
 		</div>
+
+		<div class="shows-list-container" ng-controller="UnMarkedListCtrl">
+			<ul>
+				<li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
+					<div class="show-header">
+						<input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow" value={{tuple.id}}>
+						<p class="show-title" ng-click="seeShowDescription = !seeShowDescription">
+							{{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
+						</p>
+					</div>
+
+					<div class="show-description">
+						<p ng-show="seeShowDescription"> {{ tuple.description }}</p> 
+					</div>
+
+					<div class="show-comment">
+						<form ng-show="selectedShow">
+							<textarea ng-model="tuple.comment"> {{ tuple.comment }} </textarea>
+							<input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="unSelect(tuple)"/>
+							<input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<footer>
+		</footer>
+
 	</body>
 </html>
