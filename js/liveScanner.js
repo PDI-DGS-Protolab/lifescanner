@@ -34,12 +34,23 @@ function ListCtrl($scope, $http) {
     return result;
   };
 
+  function sortByProperty(showsArray, property) {
+    showsArray.sort(function(showA, showB) {
+      return showA[property].toLowerCase() > showB[property].toLowerCase();
+    });
+    return showsArray;
+  };
+
+  function sortByTitle(showsArray) {
+    return sortByProperty(showsArray,"title");
+  };
+
   $scope.getFilteredShows = function() {
     return filterByPattern(titleMatchesPattern, $scope.searchParameter, $scope.showsPropertiesOfInterest);
   };
 
   $scope.select = function(show) {
-    if (angular.isDefined(show.comment)) {
+    if (angular.isDefined(show.comment) && show.comment.length > 0) {
       if ($scope.markedShows.indexOf(show) === -1) {
         $scope.markedShows.push(show);
 
@@ -56,15 +67,13 @@ function ListCtrl($scope, $http) {
     if (index > -1) {
       $scope.markedShows.splice(index, 1);
       $scope.showsPropertiesOfInterest.push(show);
-      $scope.showsPropertiesOfInterest.sort(function(showA, showB) {
-        return showA.title.toLowerCase() > showB.title.toLowerCase();
-      });
+      sortByTitle($scope.showsPropertiesOfInterest);
     }
     console.log($scope.markedShows);
   };
   
   $scope.changeComment = function(show,comment) {
-    if (comment !== "") {
+    if (angular.isDefined(comment) && comment.length > 0) {
       show.comment = comment;
     }
   };
@@ -90,9 +99,7 @@ function ListCtrl($scope, $http) {
 
   $scope.searchParameter = "";
 
-  $scope.rawShows = getData().sort(function(showA, showB) {
-    return showA.title.toLowerCase() > showB.title.toLowerCase();
-  });
+  $scope.rawShows = sortByTitle(getData());
   
   $scope.showsPropertiesOfInterest = getShowsIdTitleLogoDescription($scope.rawShows);
 
