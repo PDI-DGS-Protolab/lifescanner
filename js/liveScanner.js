@@ -78,10 +78,9 @@ function ListCtrl($scope, $http) {
     }
   };
 
-/** I could not get this to work! **/
   $scope.getProvisionarButtonText = function() {
     if ($scope.markedShows.length < 5) {
-      return "Provisionar";
+      return "5";
     } else {
       return "Provisionar";
     }
