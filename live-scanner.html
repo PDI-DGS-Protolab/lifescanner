@@ -51,7 +51,7 @@
 			<ul>
 				<li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
 					<div class="show-header">
-						<input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow" value={{tuple.id}}>
+						<input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)" ng-checked="tuple.checkboxState" value={{tuple.id}}>
 						<p class="show-title" ng-click="seeShowDescription = !seeShowDescription">
 							{{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
 						</p>
@@ -64,7 +64,7 @@
 					<div class="show-comment">
 						<form ng-show="selectedShow">
 							<textarea ng-model="tuple.comment"> {{ tuple.comment }} </textarea>
-							<input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="unSelect(tuple)"/>
+							<input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)"/>
 							<input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
 						</form>
 					</div>

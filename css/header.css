@@ -6,6 +6,7 @@ header {
     background: #2b2b2b;
     box-shadow: 0 2px 5px 2px #888888;
     display: block;
+    height: 60px;
     left: 0;
     position: fixed;
     top: 0;
@@ -14,11 +15,14 @@ header {
 }
 
 #top-menu {
-    margin: 20px;
+    height: 60px;
 }
 
 #search-field {
     border-radius: 5px;
+    height: 24px;
+    margin: 18px 0 18px 20px;
+    width: 200px;
 }
 
 #search-field:focus {
@@ -34,14 +38,15 @@ header {
     -webkit-border-radius: 5px;
     float: right;
     font-weight: bold;
-    height: 30px;
+    height: 40px;
+    margin: 10px 20px 10px 0;
     text-transform: uppercase;
     transition: background-color 1000ms linear;
     -moz-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     -o-transition: background-color 1000ms linear;
     -webkit-transition: background-color 1000ms linear;
-    width: 120px;
+    width: 200px;
 }
 
 #provisionar-button:hover {

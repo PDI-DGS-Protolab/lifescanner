@@ -2,7 +2,7 @@ Array.prototype.getShowsIdTitleLogoDescription = function () {
   var result = [];
   for (i=0; i<this.length; i++) {
     result.push({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo, 
-    description: this[i].description});
+    description: this[i].description, checkboxState: false});
   }
   return result;
 };
@@ -61,6 +61,7 @@ function GenericListCtrl($scope, Data) {
     if (angular.isDefined(show.comment) && show.comment.length > 0) {
       if ($scope.data.markedShows.indexOf(show) === -1) {
         $scope.data.markedShows.push(show);
+        show.checkboxState = false;
 
         var index = $scope.data.showsPropertiesOfInterest.indexOf(show);
         if (index > -1) {
@@ -80,8 +81,13 @@ function GenericListCtrl($scope, Data) {
     }
   };
 
+  $scope.toggleCheckbox = function(show) {
+      show.checkboxState = !show.checkboxState;
+  };
+
   $scope.data = Data;
 };
+
 
 function UnMarkedListCtrl($scope, Data) {
   this.prototype = new GenericListCtrl($scope, Data);

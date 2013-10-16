@@ -114,6 +114,7 @@ input[type=text] {
     background-color: #c2c2c2; 
     border: solid 2px #a8a8a8;
     border-radius: 5px;
+    margin-bottom: 10px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
