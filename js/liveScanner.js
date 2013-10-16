@@ -35,10 +35,11 @@ liveScannerApp.factory("Data", function() {
 });
 
 function HeaderCtrl($scope, Data) {
-    $scope.getProvisionarButtonText = function() {
+  $scope.getProvisionarButtonText = function() {
     if ($scope.data.markedShows.length < 5) {
-      return "5";
-    } else {
+      return "Marcar 5 programas";
+    } 
+    else {
       return "Provisionar";
     }
   };
@@ -46,8 +47,8 @@ function HeaderCtrl($scope, Data) {
   $scope.provisionar = function() {
     if ($scope.data.markedShows.length >= 5) {
       var result = [];
-      for (show in $scope.data.markedShows) {
-        result.push({id: $scope.data.markedShows[show], comment: $scope.data.markedShows[show]});
+      for (var i = 0; i < $scope.data.markedShows.length; i++) {
+        result.push({id: $scope.data.markedShows[i], comment: $scope.data.markedShows[i]});
       }
     }
   };
