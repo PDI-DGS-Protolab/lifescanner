@@ -1,5 +1,15 @@
-Array.prototype.getShowsIdTitleLogoDescription = function () {
-  var result = [];
+function ShowsArray(array) {
+  if (array !== undefined) {
+    for (var i = 0; i < array.length; ++i) {
+      this.push(array[i]);
+    }
+  }
+};
+
+ShowsArray.prototype = [];
+
+ShowsArray.prototype.getShowsIdTitleLogoDescription = function () {
+  var result = new ShowsArray();
   for (i=0; i<this.length; i++) {
     result.push({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo, 
     description: this[i].description, checkboxState: false});
@@ -7,7 +17,7 @@ Array.prototype.getShowsIdTitleLogoDescription = function () {
   return result;
 };
 
-Array.prototype.filterByPattern = function(condition, pattern) {
+ShowsArray.prototype.filterByPattern = function(condition, pattern) {
   var result = [];
   for (i=0; i<this.length; i++) {
     if (condition(pattern,this[i])) {
@@ -17,20 +27,20 @@ Array.prototype.filterByPattern = function(condition, pattern) {
   return result;
 };
 
-Array.prototype.sortByProperty = function(property) {
+ShowsArray.prototype.sortByProperty = function(property) {
   this.sort(function(showA, showB) {
     return showA[property].toLowerCase() > showB[property].toLowerCase();
   });
   return this;
 };
 
-Array.prototype.sortByTitle = function() {
+ShowsArray.prototype.sortByTitle = function() {
   return this.sortByProperty("title");
 };
 
 var liveScannerApp = angular.module("liveScannerApp", []);
 liveScannerApp.factory("Data", function() {
-  return {searchParameter: "", showsPropertiesOfInterest: getData().getShowsIdTitleLogoDescription().sortByTitle(), 
+  return {searchParameter: "", showsPropertiesOfInterest: new ShowsArray(getData()).getShowsIdTitleLogoDescription().sortByTitle(), 
     markedShows: []};
 });
 
@@ -89,8 +99,8 @@ function GenericListCtrl($scope, Data) {
 };
 
 
-function UnMarkedListCtrl($scope, Data) {
-  this.prototype = new GenericListCtrl($scope, Data);
+function UnMarkedListCtrl($scope, $injector, Data) {
+  $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
   function titleMatchesPattern(pattern, show) {
     var tmp = show.title.substr(0,pattern.length).toLowerCase();
@@ -102,8 +112,10 @@ function UnMarkedListCtrl($scope, Data) {
   };
 };
 
-function MarkedListCtrl($scope, Data) {
-  this.prototype = new GenericListCtrl($scope, Data);
+UnMarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
+
+function MarkedListCtrl($scope, $injector, Data) {
+  $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
   $scope.changeComment = function(show,comment) {
     if (angular.isDefined(comment) && comment.length > 0) {
@@ -111,3 +123,5 @@ function MarkedListCtrl($scope, Data) {
     }
   };
 };
+
+MarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
