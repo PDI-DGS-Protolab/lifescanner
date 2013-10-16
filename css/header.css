@@ -5,6 +5,8 @@ body {
 header {
     background: #2b2b2b;
     box-shadow: 0 2px 5px 2px #888888;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
     display: block;
     height: 60px;
     left: 0;
@@ -37,6 +39,7 @@ header {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     float: right;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     font-weight: bold;
     height: 40px;
     margin: 10px 20px 10px 0;

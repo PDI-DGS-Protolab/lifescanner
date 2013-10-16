@@ -1,3 +1,9 @@
+.main-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
 .shows-list-container {
     clear: both;
     display: block;
@@ -7,16 +13,17 @@
 li {
     clear: both;
     float: left;
+    width: 80%;
 }
 
 .show {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
     display: inline;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     margin: 0 auto;
     padding: 10px;
-}
-
-.show-header {
-    width: 500px;
+    width: 100%;
 }
 
 .show-checkbox {
@@ -25,7 +32,7 @@ li {
 }
 
 .show-title {
-
+    font-weight: bold;
 }
 
 .show-logo {
@@ -35,19 +42,14 @@ li {
 
 .show-description {
     float: right;
-    width: 480px;
+    width: 95%;
 }
 
 .show-comment {
     clear: both;
     float: right;
     margin-bottom: 10px;
-    width: 480px;
-}
-
-input[type=text] {
-    padding: 0 5px 0 5px;
-    width: 150px;
+    width: 95%;
 }
 
 .show textarea {
@@ -55,19 +57,32 @@ input[type=text] {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
     float: right;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     height: 100px;
-    margin-bottom: 5px;
+    margin: 5px 0 5px 0;
     max-height: 200px;
-    max-width: 474px;
-    padding: 2px;
-    width: 472px;
+    max-width: 100%;
+    padding: 5px;
+    width: 100%;
 }
 
-.show textarea:focus {
-    
+.marked-show .show-comment {
+    width: 100%;
+}
+
+.show textarea:focus {    
     box-shadow: 0 0 2px 1px #98f1dc;
     outline: none;
+}
+
+.buttons-container {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    float: right;
+    width: 100%;
 }
 
 .default-button {
@@ -75,6 +90,7 @@ input[type=text] {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     font-weight: bold;
     height: 24px;
     text-transform: uppercase;
@@ -93,21 +109,10 @@ input[type=text] {
 .cancel-comment-button {
     background-color: #dbdbdb;
     clear: both;
-    margin-bottom: 10px;
 }
 
 .cancel-comment-button:hover {
     background: rgba(0, 0, 0, 0.3);
-}
-
-.modify-comment-button {
-    background-color: rgba(152, 241, 220, .5);
-    float: right;
-    margin-bottom: 10px;
-}
-
-.modify-comment-button:hover {
-    background-color: rgba(152, 241, 220, 1);
 }
 
 .marked-show {
@@ -117,4 +122,13 @@ input[type=text] {
     margin-bottom: 10px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+}
+
+.modify-comment-button {
+    background-color: rgba(152, 241, 220, .5);
+    float: right;
+}
+
+.modify-comment-button:hover {
+    background-color: rgba(152, 241, 220, 1);
 }
