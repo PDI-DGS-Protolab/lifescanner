@@ -42,6 +42,7 @@ li {
 }
 
 .show-description {
+    cursor: default;
     float: right;
     width: 95%;
 }
