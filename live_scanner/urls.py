@@ -1,8 +1,9 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.views import login, logout
+
+from vivo.views import index, programs
 
 import settings
-
-from vivo.views import index
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -13,6 +14,17 @@ urlpatterns = patterns('',
     # VIEWS
     ######################################################
     url(r'^$', index),
+
+    ######################################################
+    # SERVICES
+    ######################################################
+    url(r'^programs$', programs),
+
+    ######################################################
+    # ACCOUNTS
+    ######################################################
+    (r'^accounts/login/$',  login),
+    (r'^accounts/logout/$', logout),
 
     ######################################################
     # ADMIN
