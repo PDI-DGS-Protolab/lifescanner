@@ -5,14 +5,18 @@
         <meta charset="utf-8">
         <title>LiveScanner</title>
         <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>-->
+
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-        <script src="js/dataScanner.js"></script>
-        <script src="js/liveScanner.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/header.css">
-        <link rel="stylesheet" type="text/css" href="css/shows.css">
+        <script src="/static/js/dataScanner.js"></script>
+        <script src="/static/js/liveScanner.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="/static/css/header.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/shows.css">
 
     </head>
     <body ng-app="liveScannerApp">
+
+        {%verbatim%}
 
         <header>
             <div id="top-menu" ng-controller="HeaderCtrl">
@@ -78,6 +82,8 @@
 
         <footer>
         </footer>
+
+        {%endverbatim%}
 
     </body>
 </html>
