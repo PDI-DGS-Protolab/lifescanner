@@ -40,16 +40,18 @@ ShowsArray.prototype.sortByTitle = function() {
 
 var liveScannerApp = angular.module("liveScannerApp", []);
 liveScannerApp.factory("Data", function() {
-  return {searchParameter: "", showsPropertiesOfInterest: new ShowsArray(getData()).getShowsIdTitleLogoDescription().sortByTitle(), 
+  return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: new ShowsArray(getData()).getShowsIdTitleLogoDescription().sortByTitle(), 
     markedShows: []};
 });
 
 function HeaderCtrl($scope, Data) {
   $scope.getProvisionarButtonText = function() {
     if ($scope.data.markedShows.length < 5) {
+      $scope.data.provisionarStyle = "";
       return "Marcar 5 programas";
     } 
     else {
+      $scope.data.provisionarStyle = "validated";
       return "Provisionar";
     }
   };

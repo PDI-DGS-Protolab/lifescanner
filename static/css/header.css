@@ -22,6 +22,8 @@ header {
 
 #search-field {
     border-radius: 5px;
+    cursor: ;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     height: 24px;
     margin: 18px 0 18px 20px;
     width: 200px;
@@ -38,6 +40,7 @@ header {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    cursor: pointer;
     float: right;
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     font-weight: bold;
@@ -59,4 +62,8 @@ header {
     -ms-transition: background-color 1000ms linear;
     -o-transition: background-color 1000ms linear;
     -webkit-transition: background-color 1000ms linear;
+}
+
+#provisionar-button.validated {
+    background-color: #98f1dc;
 }

@@ -32,6 +32,7 @@ li {
 }
 
 .show-title {
+    cursor: pointer;
     font-weight: bold;
 }
 
@@ -90,6 +91,7 @@ li {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    cursor: pointer;
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     font-weight: bold;
     height: 24px;
