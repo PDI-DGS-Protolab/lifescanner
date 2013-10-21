@@ -8,7 +8,7 @@ FOLDER = os.getcwd()
 # ENDPOINTS CONFIG
 #######################################################
 
-ENDPOINT = os.environ.get('ENDPOINT', 'https://s3-us-west-2.amazonaws.com/protolab.upc.live-scanner/vivo.json')
+ENDPOINT = os.environ.get('ENDPOINT', 'http://livescanner.pdi.tid.es/livesc/epgcontents/inclusion')
 
 #######################################################
 

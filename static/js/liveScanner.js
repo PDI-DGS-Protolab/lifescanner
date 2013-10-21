@@ -40,7 +40,7 @@ ShowsArray.prototype.sortByTitle = function() {
 
 var liveScannerApp = angular.module("liveScannerApp", []);
 liveScannerApp.factory("Data", function() {
-  return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: new ShowsArray(getData()).getShowsIdTitleLogoDescription().sortByTitle(), 
+  return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: new ShowsArray(),
     markedShows: []};
 });
 
@@ -71,7 +71,7 @@ function HeaderCtrl($scope, Data) {
   $scope.data = Data;
 };
 
-function GenericListCtrl($scope, Data) {
+function GenericListCtrl($scope, $http, Data) {
   $scope.select = function(show) {
     if ($scope.data.markedShows.indexOf(show) === -1) {
       $scope.data.markedShows.push(show);
@@ -99,6 +99,15 @@ function GenericListCtrl($scope, Data) {
   };
 
   $scope.data = Data;
+
+  $http({
+    url: "/programs",
+    method: "GET"
+  }).success(function(data, status, headers, config) {
+    $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
+  }).error(function(data, status, headers, config) {
+    $scope.status = status;
+  });
 };
 
 
