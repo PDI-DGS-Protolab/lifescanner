@@ -20,8 +20,19 @@
 
         <header>
             <div id="top-menu" ng-controller="HeaderCtrl">
-                <input id="search-field" type="search" placeholder="Procurar" ng-model="data.searchParameter"/> 
-                <input id="provisionar-button" class="{{ data.provisionarStyle }}" type="button" value="{{ getProvisionarButtonText() }}" ng-style="provisionarStyle" ng-click="provisionar()"/>
+                <div id="search-field-container">
+                    <input id="search-field" type="search" placeholder="Procurar" ng-model="data.searchParameter"/> 
+                </div>
+                <div id="selection-hint-container">
+                    <p id="selection-hint">Escolha entre 5 e 10 conteúdos</p>
+                </div>
+                <div id="provisionar-button-container">
+                    <input id="provisionar-button" class="{{ data.provisionarStyle }}" type="button" value="Provisionar" ng-disabled="getProvisionarButtonStatus()" ng-style="provisionarStyle" ng-click="provisionar()"/>
+                </div>
+
+                <div id="log-out">
+                    <a>Log out</a>
+                </div>
             </div>
         </header>
 
@@ -44,7 +55,7 @@
 
                         <div class="show-comment">
                             <form ng-show="seeShowItems">
-                                <textarea placeholder="Escreva o seu comentário" ng-model="comment"> </textarea>
+                                <textarea placeholder="Escreva o seu comentário" ng-model="comment"></textarea>
                                 <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="changeComment(tuple,comment); seeShowItems = !seeShowItems"/>
                             </form>
                         </div>
@@ -54,7 +65,7 @@
 
             <div class="shows-list-container" ng-controller="UnMarkedListCtrl">
                 <ul>
-                    <li class="show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
+                    <li class="show unmarked-show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
                         <div class="show-header">
                             <input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)" ng-checked="tuple.checkboxState" value={{tuple.id}}>
                             <p class="show-title" ng-click="seeShowDescription = !seeShowDescription">

@@ -7,8 +7,8 @@ header {
     box-shadow: 0 2px 5px 2px #888888;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     display: block;
-    height: 60px;
     left: 0;
     position: fixed;
     top: 0;
@@ -17,21 +17,64 @@ header {
 }
 
 #top-menu {
-    height: 60px;
+    height: auto;
+    min-height: 100%;
+}
+
+#search-field-container {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 18px 0 18px 20px;
+    float: left;
+    width: 15%;
 }
 
 #search-field {
     border-radius: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     cursor: ;
+    float: left;
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     height: 24px;
-    margin: 18px 0 18px 20px;
-    width: 200px;
+    width: 100%;
 }
 
 #search-field:focus {
     border-color: #98f1dc;
     outline: none;
+}
+
+#selection-hint-container {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    float: left;
+    height: 100%;
+    min-width: 200px;
+    width: 70%;
+}
+
+#selection-hint {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    color: #98f1dc;
+    font: bold 20px century gothic, URW gothic L, Helvetica, Sans-Serif;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#provisionar-button-container {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    float: right;
+    min-width: 150px;
+    padding: 10px 20px 10px 0;
+    width: 15%;
 }
 
 #provisionar-button {
@@ -40,30 +83,36 @@ header {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     cursor: pointer;
     float: right;
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     font-weight: bold;
     height: 40px;
-    margin: 10px 20px 10px 0;
     text-transform: uppercase;
     transition: background-color 1000ms linear;
     -moz-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     -o-transition: background-color 1000ms linear;
     -webkit-transition: background-color 1000ms linear;
-    width: 200px;
-}
-
-#provisionar-button:hover {
-    background-color: #98f1dc;
-    transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -webkit-transition: background-color 1000ms linear;
+    width: 100%;
 }
 
 #provisionar-button.validated {
     background-color: #98f1dc;
+}
+
+#log-out {
+    clear: both;
+    float: right;
+    padding: 0 20px 10px 0;
+}
+
+#log-out a {
+    color: #98f1dc;
+    font: bold 12px century gothic, URW gothic L, Helvetica, Sans-Serif;
+    text-align: right;
+    vertical-align: middle;
 }
