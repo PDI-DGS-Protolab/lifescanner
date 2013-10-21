@@ -45,19 +45,22 @@ liveScannerApp.factory("Data", function() {
 });
 
 function HeaderCtrl($scope, Data) {
-  $scope.getProvisionarButtonText = function() {
+  $scope.getProvisionarButtonStatus = function() {
     if ($scope.data.markedShows.length < 5) {
       $scope.data.provisionarStyle = "";
-      return "Marcar 5 programas";
+      return true;
     } 
     else {
       $scope.data.provisionarStyle = "validated";
-      return "Provisionar";
+      return false;
     }
   };
 
   $scope.provisionar = function() {
-    if ($scope.data.markedShows.length >= 5) {
+    if ($scope.data.markedShows.length > 10) {
+      //popup maximum 10
+    }
+    else if ($scope.data.markedShows.length >= 5) {
       var result = [];
       for (var i = 0; i < $scope.data.markedShows.length; i++) {
         result.push({id: $scope.data.markedShows[i], comment: $scope.data.markedShows[i]});
@@ -70,15 +73,13 @@ function HeaderCtrl($scope, Data) {
 
 function GenericListCtrl($scope, Data) {
   $scope.select = function(show) {
-    if (angular.isDefined(show.comment) && show.comment.length > 0) {
-      if ($scope.data.markedShows.indexOf(show) === -1) {
-        $scope.data.markedShows.push(show);
-        show.checkboxState = false;
+    if ($scope.data.markedShows.indexOf(show) === -1) {
+      $scope.data.markedShows.push(show);
+      show.checkboxState = false;
 
-        var index = $scope.data.showsPropertiesOfInterest.indexOf(show);
-        if (index > -1) {
-          $scope.data.showsPropertiesOfInterest.splice(index, 1);
-        }
+      var index = $scope.data.showsPropertiesOfInterest.indexOf(show);
+      if (index > -1) {
+        $scope.data.showsPropertiesOfInterest.splice(index, 1);
       }
     }
   };
@@ -120,9 +121,7 @@ function MarkedListCtrl($scope, $injector, Data) {
   $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
   $scope.changeComment = function(show,comment) {
-    if (angular.isDefined(comment) && comment.length > 0) {
-      show.comment = comment;
-    }
+    show.comment = comment;
   };
 };
 
