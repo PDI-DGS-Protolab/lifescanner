@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.views import login, logout
 
-from vivo.views import index, programs
+from vivo.views import index, programs, suggestions
 
 import settings
 
@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     # SERVICES
     ######################################################
     url(r'^programs/$', programs),
+    url(r'^suggestions/$', suggestions),
 
     ######################################################
     # ACCOUNTS

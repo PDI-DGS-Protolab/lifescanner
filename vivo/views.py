@@ -5,10 +5,10 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.template import Context, loader
 from django.shortcuts import render_to_response
+import urllib
+import httplib
 
-import urllib, json
-
-#@login_required
+@login_required
 def index(request):
     #tmp=programs(request)
     #print tmp
@@ -24,3 +24,15 @@ def programs(request):
     #c = Context(json1)
     #return render_to_response('index.html', json1, content_type="application/json")
     return HttpResponse(json1, mimetype="application/json", status=200)
+
+def suggestions(request):
+    params = '[{"epgContentId":"4369","promotedBy":"operator","suggestion":"New suggestion for 4369"}]'
+    #TO DO: read content from the client
+    headers = {"Content-type" : "application/json", "Accept": "application/json"}
+    conn = httplib.HTTPConnection("livescanner.pdi.tid.es")
+    conn.request("POST", "/livesc/epgcontents/suggestions", params, headers)
+    response = conn.getresponse()
+    print response.status, response.reason
+    data = response.read()
+    conn.close()
+    return HttpResponse(data, mimetype="application/json", status=200)
