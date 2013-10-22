@@ -7,7 +7,7 @@
 .shows-list-container {
     clear: both;
     display: block;
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 ul {
@@ -21,6 +21,7 @@ li {
 }
 
 .show {
+    border-bottom: solid 2px #b8b8b8;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -67,28 +68,51 @@ li {
     width: 95%;
 }
 
+.show-description p {
+    border-bottom: solid 2px #b8b8b8;
+    padding-bottom: 10px;
+}
+
 .show-comment {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     clear: both;
     float: right;
     margin-bottom: 10px;
     width: 95%;
 }
 
-.show textarea {
-    border: solid 2px #a8a8a8;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+.show-comment-title {
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
+    font-style: italic;
+}
+
+.show-comment-left-section {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    float: right;
-    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
-    height: 100px;
-    margin: 5px 0 5px 0;
-    max-height: 200px;
-    max-width: 100%;
-    padding: 5px;
+    float: left;
+    padding-right: 5px;
+    width: 50%;
+}
+
+.show-comment-right-section {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    float: left;
+    padding-left: 5px;
+    width: 50%;
+}
+
+.show-comment-checkbox {
+    float: left;
+}
+
+.show-comment-option {
+    float: left;
+    font: italic 14px century gothic, URW gothic L, Helvetica, Sans-Serif;
     width: 100%;
 }
 
