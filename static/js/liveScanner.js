@@ -44,7 +44,7 @@ liveScannerApp.factory("Data", function() {
     markedShows: []};
 });
 
-function HeaderCtrl($scope, Data) {
+function HeaderCtrl($scope, $http, Data) {
   $scope.getProvisionarButtonStatus = function() {
     if ($scope.data.markedShows.length < 5) {
       $scope.data.provisionarStyle = "";
@@ -57,18 +57,43 @@ function HeaderCtrl($scope, Data) {
   };
 
   $scope.provisionar = function() {
+
+
+
     if ($scope.data.markedShows.length > 10) {
+
       //popup maximum 10
+
     }
     else if ($scope.data.markedShows.length >= 5) {
+
       var result = [];
+
       for (var i = 0; i < $scope.data.markedShows.length; i++) {
-        result.push({id: $scope.data.markedShows[i], comment: $scope.data.markedShows[i]});
+        result.push({"epgContentId": $scope.data.markedShows[i].id, "promotedBy":"operator", "suggestion": "comment"});
       }
+        console.log(JSON.stringify(result));
+      $http({
+          url: "/suggestions/",
+          method: "POST",
+          data: JSON.stringify(result)
+        }).success(function(data, status, headers, config) {
+
+          alert("sent!");
+
+
+        }).error(function(data, status, headers, config) {
+          $scope.status = status;
+          alert("Not working!");
+        });
     }
   };
 
   $scope.data = Data;
+
+
+
+
 };
 
 function GenericListCtrl($scope, $http, Data) {
