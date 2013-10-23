@@ -54,10 +54,11 @@
 
                         <div class="show-comment" ng-show="seeShowItems">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
+       
                             <div class="show-comment-left-section">
                                 <form>
                                     <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a live event or live sports - <b>it's happening now!</b></p>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></p>
+                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox"></p>
                                     <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a series in it's last season - <b>see it before it's over</b></p>
                                 </form>
                             </div>
@@ -92,19 +93,18 @@
                         <div class="show-comment" ng-show="selectedShow">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
                             <div class="show-comment-left-section">
-                                <form>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a live event or live sports - <b>it's happening now!</b></p>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></p>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a series in it's last season - <b>see it before it's over</b></p>
-                                </form>
+                            <select ng-model="tuple.comment" ng-init="tuple.comment='tonights top picks'">
+                                <div>
+                                    <option value="it's happening now!"><p class="show-comment-option">for a live event or live sports - <b>it's happening now!</b></p></option> 
+                                    <option value="be the first to see it on TV"><p class="show-comment-option">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></p></option>
+                                    <option value="see it before it's over"><p class="show-comment-option">for a series in it's last season - <b>see it before it's over</b></p></option>
+                                    <option value="the grand finale"><p class="show-comment-option">for a final episode - <b>the grand finale</b></p></option>
+                                    <option value="tonight's big game"><p class="show-comment-option">for sports or football - <b>tonight's big game</b></p></option>
+                                    <option value="tonights top picks" selected><p class="show-comment-option">for anything else - <b>tonight's top picks</b></p></option>
+                                </div>
+                            </select>
                             </div>
-                            <div class="show-comment-right-section">
-                                <form>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for a final episode - <b>the grand finale</b></p>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox">for sports or football - <b>tonight's big game</b></p>
-                                    <p class="show-comment-option"><input class="show-comment-checkbox" type="checkbox" checked>for anything else - <b>tonight's top picks</b></p>
-                                </form>
-                            </div>
+
                             <div class="buttons-container">
                                 <input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)"/>
                                 <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
