@@ -11,8 +11,10 @@ ShowsArray.prototype = [];
 ShowsArray.prototype.getShowsIdTitleLogoDescription = function () {
   var result = new ShowsArray();
   for (i=0; i<this.length; i++) {
-    result.push({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo, 
+    var tmp = ({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo,
     description: this[i].description, checkboxState: false});
+    if (tmp.description == "") tmp.description = "Sem descrição disponível."
+    result.push(tmp);
   }
   return result;
 };
@@ -49,7 +51,7 @@ function HeaderCtrl($scope, $http, Data) {
     if ($scope.data.markedShows.length < 5) {
       $scope.data.provisionarStyle = "";
       return true;
-    } 
+    }
     else {
       $scope.data.provisionarStyle = "validated";
       return false;
@@ -57,43 +59,32 @@ function HeaderCtrl($scope, $http, Data) {
   };
 
   $scope.provisionar = function() {
-
-
-
     if ($scope.data.markedShows.length > 10) {
-
       //popup maximum 10
-
     }
     else if ($scope.data.markedShows.length >= 5) {
-
       var result = [];
 
       for (var i = 0; i < $scope.data.markedShows.length; i++) {
-        result.push({"epgContentId": $scope.data.markedShows[i].id, "promotedBy":"operator", "suggestion": "comment"});
+        result.push({"epgContentId": $scope.data.markedShows[i].id, "promotedBy": "operator", "suggestion": "$scope.data.markedShows[i].comment"});
       }
-        console.log(JSON.stringify(result));
+
       $http({
           url: "/suggestions/",
           method: "POST",
-          data: JSON.stringify(result)
+          data: result,
+          headers: {"Content-Type" : "application/json"}
         }).success(function(data, status, headers, config) {
-
-          alert("sent!");
-
-
+          console.log(data);
         }).error(function(data, status, headers, config) {
           $scope.status = status;
-          alert("Not working!");
+          console.log("error");
+          console.log(data);
         });
     }
   };
-
+  
   $scope.data = Data;
-
-
-
-
 };
 
 function GenericListCtrl($scope, $http, Data) {

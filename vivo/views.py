@@ -3,13 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
-from django.template import Context, loader
-from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 import urllib
 import httplib
-import json
 
-#@login_required
+@login_required
 def index(request):
     #tmp=programs(request)
     #print tmp
@@ -26,23 +24,14 @@ def programs(request):
     #return render_to_response('index.html', json1, content_type="application/json")
     return HttpResponse(json1, mimetype="application/json", status=200)
 
-
+@csrf_exempt
 def suggestions(request):
-    #params = '[{"epgContentId":"4369","promotedBy":"operator","suggestion":"New suggestion for 4369"}]'
-    #TODO: read content from the client
-
-    body = json.loads(request.raw_post_data)
-    #params2 = json.loads(body)
-
-    print body
-
-
-
-   # headers = {"Content-type" : "application/json", "Accept": "application/json"}
-   # conn = httplib.HTTPConnection("livescanner.pdi.tid.es")
-   # conn.request("POST", "/livesc/epgcontents/suggestions", params2, headers)
-    #response = conn.getresponse()
-    #print response.status, response.reason
-   # data = response.read()
-   # conn.close()
-    return HttpResponse(body, mimetype="application/json", status=200)
+    params = request.body
+    headers = {"Content-type" : "application/json", "Accept": "application/json"}
+    conn = httplib.HTTPConnection("livescanner.pdi.tid.es")
+    conn.request("POST", "/livesc/epgcontents/suggestions", params, headers)
+    response = conn.getresponse()
+    print response.status, response.reason
+    data = response.read()
+    conn.close()
+    return HttpResponse(data, mimetype="application/json", status=200)
