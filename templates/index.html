@@ -56,7 +56,7 @@
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
        
                             <div class="show-comment-left-section">
-                            <select ng-model="tuple.comment" ng-init="tuple.comment='tonights top picks'">
+                            <select ng-model="comment" ng-init="comment=tuple.comment">
                                 <div>
                                     <option value="it's happening now!"><p class="show-comment-option">for a live event or live sports - <b>it's happening now!</b></p></option> 
                                     <option value="be the first to see it on TV"><p class="show-comment-option">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></p></option>
@@ -91,7 +91,6 @@
                         </div>
                         <div class="show-comment" ng-show="selectedShow">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
-                                
                             <div class="show-comment-left-section">
                             <select ng-model="tuple.comment" ng-init="tuple.comment='tonights top picks'">
                                 <div>
