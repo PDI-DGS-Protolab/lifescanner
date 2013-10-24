@@ -54,14 +54,9 @@
 
                         <div class="show-comment" ng-show="seeShowItems">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
+       
                             <div class="show-comment-combobox">
-                                <select ng-model="comment" ng-init="comment=tuple.comment">
-                                    <option value="it's happening now!">for a live event or live sports - <b>it's happening now!</b></option> 
-                                    <option value="be the first to see it on TV">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></option>
-                                    <option value="see it before it's over">for a series in it's last season - <b>see it before it's over</b></option>
-                                    <option value="the grand finale">for a final episode - <b>the grand finale</b></option>
-                                    <option value="tonight's big game">for sports or football - <b>tonight's big game</b></option>
-                                </select>
+                                <select ng-model="comment" ng-init="comment=tuple.comment" ng-options="c.comment as (c.comment + ' - ' + c.hint) for c in data.comments"></select><br>
                             </div>
 
                             <div class="buttons-container">
@@ -73,6 +68,7 @@
             </div>
 
             <div class="shows-list-container" ng-controller="UnMarkedListCtrl">
+                
                 <ul>
                     <li class="show unmarked-show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
                         <div class="show-header">
@@ -88,14 +84,7 @@
                         <div class="show-comment" ng-show="selectedShow">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
                             <div class="show-comment-combobox">
-                                <select ng-model="tuple.comment" ng-init="tuple.comment='tonights top picks'">
-                                    <option value="it's happening now!">for a live event or live sports - <b>it's happening now!</b></option> 
-                                    <option value="be the first to see it on TV">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></option>
-                                    <option value="see it before it's over">for a series in it's last season - <b>see it before it's over</b></option>
-                                    <option value="the grand finale">for a final episode - <b>the grand finale</b></option>
-                                    <option value="tonight's big game">for sports or football - <b>tonight's big game</b></option>
-                                    <option value="tonights top picks" selected>for anything else - <b>tonight's top picks</b></option>
-                                </select>
+                                <select ng-model="tuple.comment" ng-init="tuple.comment=data.comments[data.defaultCommentValue].comment" ng-options="c.comment as (c.comment + ' - ' + c.hint) for c in data.comments"></select><br>
                             </div>
 
                             <div class="buttons-container">
