@@ -60,13 +60,13 @@ function HeaderCtrl($scope, $http, Data) {
 
   $scope.provisionar = function() {
     if ($scope.data.markedShows.length > 10) {
-      //popup maximum 10
+      alert("Please select 5-10 suggestions");
     }
     else if ($scope.data.markedShows.length >= 5) {
       var result = [];
 
       for (var i = 0; i < $scope.data.markedShows.length; i++) {
-        result.push({"epgContentId": $scope.data.markedShows[i].id, "promotedBy": "operator", "suggestion": "$scope.data.markedShows[i].comment"});
+        result.push({"epgContentId": $scope.data.markedShows[i].id, "promotedBy": "operator", "suggestion": $scope.data.markedShows[i].comment});
       }
 
       $http({
@@ -75,11 +75,10 @@ function HeaderCtrl($scope, $http, Data) {
           data: result,
           headers: {"Content-Type" : "application/json"}
         }).success(function(data, status, headers, config) {
-          console.log(data);
+          alert("Number of suggestions updated: " + data.suggestionsUpdated);
         }).error(function(data, status, headers, config) {
           $scope.status = status;
-          console.log("error");
-          console.log(data);
+          alert("Error sending the message")
         });
     }
   };
