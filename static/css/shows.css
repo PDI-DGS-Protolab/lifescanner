@@ -99,12 +99,13 @@ li {
     -webkit-box-sizing: border-box;
     float: left;
     padding-bottom: 20px;
-    width: 50%;
+    width: 70%;
 }
 
 .show-comment-combobox select {
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     height: 25px;
+    width: 100%;
 }
 
 .show-comment-combobox select:focus {
@@ -112,21 +113,13 @@ li {
     outline: none;
 }
 
-.show-comment-hint {
-
-}
-
-.show-comment-option {
+.show-comment-combobox option {
     float: left;
     font: italic bold 14px century gothic, URW gothic L, Helvetica, Sans-Serif;
     width: 100%;
 }
 
-.bold {
-    font-weight: bold;
-}
-
-.marked-show .show-comment {
+.marked-show {
     width: 100%;
 }
 
@@ -139,8 +132,9 @@ li {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    float: right;
-    width: 100%;
+    clear: both;
+    float: left;
+    width: 70%;
 }
 
 .default-button {
@@ -168,6 +162,7 @@ li {
 .cancel-comment-button {
     background-color: #dbdbdb;
     clear: both;
+    float: left;
 }
 
 .cancel-comment-button:hover {
@@ -185,7 +180,8 @@ li {
 
 .modify-comment-button {
     background-color: rgba(152, 241, 220, .5);
-    float: right;
+    float: left;
+    margin-left: 10px;
 }
 
 .modify-comment-button:hover {
