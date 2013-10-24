@@ -40,11 +40,29 @@ ShowsArray.prototype.sortByTitle = function() {
   return this.sortByProperty("title");
 };
 
+
+
 var liveScannerApp = angular.module("liveScannerApp", []);
+
 liveScannerApp.factory("Data", function() {
-  return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: new ShowsArray(),
-    markedShows: []};
+  return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: 
+  new ShowsArray(), markedShows: [], 
+  defaultCommentValue: 5, comments: 
+  [{hint: "For a live event or live sports",
+  comment: "It's happening now!"},
+  {hint: "For a movie first on live tv, or the first series in season", 
+  comment: "Be the first to see it on TV"},
+  {hint: "For a series in it's last season",
+  comment: "See it before it's over"},
+  {hint: "For a final episode",
+  comment: "The grand finale"},
+  {hint: "For sports or football", 
+  comment: "Tonight's big game"},
+  {hint: "For anything else",
+  comment: "Tonight's top picks"}]}
 });
+
+
 
 function HeaderCtrl($scope, $http, Data) {
   $scope.getProvisionarButtonStatus = function() {
@@ -86,6 +104,8 @@ function HeaderCtrl($scope, $http, Data) {
   $scope.data = Data;
 };
 
+
+
 function GenericListCtrl($scope, $http, Data) {
   $scope.select = function(show) {
     if ($scope.data.markedShows.indexOf(show) === -1) {
@@ -126,6 +146,7 @@ function GenericListCtrl($scope, $http, Data) {
 };
 
 
+
 function UnMarkedListCtrl($scope, $injector, Data) {
   $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
@@ -140,6 +161,8 @@ function UnMarkedListCtrl($scope, $injector, Data) {
 };
 
 UnMarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
+
+
 
 function MarkedListCtrl($scope, $injector, Data) {
   $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
