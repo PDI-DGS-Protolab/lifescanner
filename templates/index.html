@@ -54,18 +54,15 @@
 
                         <div class="show-comment" ng-show="seeShowItems">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
-       
-                            <div class="show-comment-left-section">
-                            <select ng-model="comment" ng-init="comment=tuple.comment">
-                                <div>
-                                    <option value="it's happening now!"><p class="show-comment-option">for a live event or live sports - <b>it's happening now!</b></p></option> 
+                            <div class="show-comment-combobox">
+                                <select ng-model="comment" ng-init="comment=tuple.comment">
+                                    <option value="it's happening now!">for a live event or live sports - <b>it's happening now!</b></option> 
                                     <option value="be the first to see it on TV"><p class="show-comment-option">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></p></option>
-                                    <option value="see it before it's over"><p class="show-comment-option">for a series in it's last season - <b>see it before it's over</b></p></option>
-                                    <option value="the grand finale"><p class="show-comment-option">for a final episode - <b>the grand finale</b></p></option>
-                                    <option value="tonight's big game"><p class="show-comment-option">for sports or football - <b>tonight's big game</b></p></option>
-                                    <option value="tonights top picks" selected><p class="show-comment-option">for anything else - <b>tonight's top picks</b></p></option>
-                                </div>
-                            </select>
+                                    <option value="see it before it's over">for a series in it's last season - <b>see it before it's over</b></option>
+                                    <option value="the grand finale">for a final episode - <b>the grand finale</b></option>
+                                    <option value="tonight's big game">for sports or football - <b>tonight's big game</b></option>
+                                    <option value="tonights top picks" selected>for anything else - <b>tonight's top picks</b></option>
+                                </select>
                             </div>
 
                             <div class="buttons-container">
@@ -91,17 +88,15 @@
                         </div>
                         <div class="show-comment" ng-show="selectedShow">
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
-                            <div class="show-comment-left-section">
-                            <select ng-model="tuple.comment" ng-init="tuple.comment='tonights top picks'">
-                                <div>
-                                    <option value="it's happening now!"><p class="show-comment-option">for a live event or live sports - <b>it's happening now!</b></p></option> 
+                            <div class="show-comment-combobox">
+                                <select ng-model="tuple.comment" ng-init="tuple.comment='tonights top picks'">
+                                    <option value="it's happening now!">for a live event or live sports - <b>it's happening now!</b></option> 
                                     <option value="be the first to see it on TV"><p class="show-comment-option">for a movie first on live tv, or the first series in season - <b>be the first to see it on TV</b></p></option>
-                                    <option value="see it before it's over"><p class="show-comment-option">for a series in it's last season - <b>see it before it's over</b></p></option>
-                                    <option value="the grand finale"><p class="show-comment-option">for a final episode - <b>the grand finale</b></p></option>
-                                    <option value="tonight's big game"><p class="show-comment-option">for sports or football - <b>tonight's big game</b></p></option>
-                                    <option value="tonights top picks" selected><p class="show-comment-option">for anything else - <b>tonight's top picks</b></p></option>
-                                </div>
-                            </select>
+                                    <option value="see it before it's over">for a series in it's last season - <b>see it before it's over</b></option>
+                                    <option value="the grand finale">for a final episode - <b>the grand finale</b></option>
+                                    <option value="tonight's big game">for sports or football - <b>tonight's big game</b></option>
+                                    <option value="tonights top picks" selected>for anything else - <b>tonight's top picks</b></option>
+                                </select>
                             </div>
 
                             <div class="buttons-container">
