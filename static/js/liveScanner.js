@@ -42,7 +42,7 @@ ShowsArray.prototype.sortByTitle = function() {
 
 
 
-var liveScannerApp = angular.module("liveScannerApp", []);
+var liveScannerApp = angular.module("liveScannerApp", ["wijmo"]);
 
 liveScannerApp.factory("Data", function() {
   return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: 
@@ -106,7 +106,7 @@ function HeaderCtrl($scope, $http, Data) {
 
 
 
-function GenericListCtrl($scope, $http, Data) {
+function GenericListCtrl($scope, Data) {
   $scope.select = function(show) {
     if ($scope.data.markedShows.indexOf(show) === -1) {
       $scope.data.markedShows.push(show);
@@ -134,15 +134,6 @@ function GenericListCtrl($scope, $http, Data) {
   };
 
   $scope.data = Data;
-
-  $http({
-    url: "/programs",
-    method: "GET"
-  }).success(function(data, status, headers, config) {
-    $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
-  }).error(function(data, status, headers, config) {
-    $scope.status = status;
-  });
 };
 
 
@@ -164,12 +155,21 @@ UnMarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
 
 
 
-function MarkedListCtrl($scope, $injector, Data) {
+function MarkedListCtrl($scope, $injector, $http, Data) {
   $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
   $scope.changeComment = function(show,comment) {
     show.comment = comment;
   };
+
+  $http({
+    url: "/programs",
+    method: "GET"
+  }).success(function(data, status, headers, config) {
+    $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
+  }).error(function(data, status, headers, config) {
+    $scope.status = status;
+  });
 };
 
 MarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
