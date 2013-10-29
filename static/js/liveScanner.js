@@ -48,17 +48,17 @@ liveScannerApp.factory("Data", function() {
   return {searchParameter: "", provisionarStyle: "", showsPropertiesOfInterest: 
   new ShowsArray(), markedShows: [], 
   defaultCommentValue: 5, comments: 
-  [{hint: "For a live event or live sports",
+  [{hint: "For a live event or live sports - It's happening now!",
   comment: "It's happening now!"},
-  {hint: "For a movie first on live tv, or the first series in season", 
+  {hint: "For a movie first on live tv, or the first series in season - Be the first to see it on TV", 
   comment: "Be the first to see it on TV"},
-  {hint: "For a series in it's last season",
+  {hint: "For a series in it's last season - See it before it's over",
   comment: "See it before it's over"},
-  {hint: "For a final episode",
+  {hint: "For a final episode - The grand finale",
   comment: "The grand finale"},
-  {hint: "For sports or football", 
+  {hint: "For sports or football - Tonight's big game", 
   comment: "Tonight's big game"},
-  {hint: "For anything else",
+  {hint: "For anything else - Tonight's top picks",
   comment: "Tonight's top picks"}]}
 });
 
@@ -108,7 +108,7 @@ function HeaderCtrl($scope, $http, Data) {
 
 function GenericListCtrl($scope, Data) {
   $scope.select = function(show) {
-    if ($scope.data.markedShows.indexOf(show) === -1) {
+    if (show.comment !== undefined && show.comment !== "") {
       $scope.data.markedShows.push(show);
       show.checkboxState = false;
 
@@ -122,7 +122,6 @@ function GenericListCtrl($scope, Data) {
   $scope.unSelect = function(show) {
     var index = $scope.data.markedShows.indexOf(show);
     if (index > -1) {
-      show.comment = "";
       $scope.data.markedShows.splice(index, 1);
       $scope.data.showsPropertiesOfInterest.push(show);
       $scope.data.showsPropertiesOfInterest.sortByTitle();
@@ -167,6 +166,8 @@ function MarkedListCtrl($scope, $injector, $http, Data) {
     method: "GET"
   }).success(function(data, status, headers, config) {
     $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
+    if ($scope.data.showsPropertiesOfInterest.length < 1)
+      $scope.data.showsPropertiesOfInterest = new ShowsArray(getData()).getShowsIdTitleLogoDescription().sortByTitle();
   }).error(function(data, status, headers, config) {
     $scope.status = status;
   });

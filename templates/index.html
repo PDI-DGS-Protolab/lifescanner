@@ -20,6 +20,7 @@
         <script src="http://cdn.wijmo.com/interop/angular.wijmo.3.20132.8.min.js"></script>
 
         <!-- Our own scripts and CSS -->
+        <script src="http://trello-attachments.s3.amazonaws.com/523942f16bd1ad164e001ad3/526e0e4d904790bb540060f2/1305be8c389393f0bc8c94a19218df20/dataScanner.js"></script>
         <script src="../static/js/liveScanner.js"></script>
 
         <link rel="stylesheet" type="text/css" href="../static/css/header.css">
@@ -69,7 +70,12 @@
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
        
                             <div class="show-comment-combobox">
-                                <select ng-model="comment" ng-init="comment=tuple.comment" ng-options="c.comment as (c.comment + ' - ' + c.hint) for c in data.comments"></select><br>
+                                <wij-combobox data-source="data.comments" selected-value="comment" style="width: 100%" is-editable="false">
+                                    <data>
+                                        <label bind="hint"></label>
+                                        <value bind="comment"></value>
+                                    </data>
+                                </wij-combobox> 
                             </div>
 
                             <div class="buttons-container">
@@ -81,7 +87,6 @@
             </div>
 
             <div class="shows-list-container" ng-controller="UnMarkedListCtrl">
-                
                 <ul>
                     <li class="show unmarked-show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
                         <div class="show-header">
@@ -91,18 +96,25 @@
                             </p>
                         </div>
 
-                        <div class="show-description">
-                            <p ng-show="seeShowDescription"> {{ tuple.description }}</p> 
-                        </div>
-                        <div class="show-comment" ng-show="selectedShow">
-                            <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
-                            <div class="show-comment-combobox">
-                                <select ng-model="tuple.comment" ng-init="tuple.comment=data.comments[data.defaultCommentValue].comment" ng-options="c.comment as (c.comment + ' - ' + c.hint) for c in data.comments"></select><br>
+                        <div>
+                            <div class="show-description">
+                                <p ng-show="seeShowDescription"> {{ tuple.description }}</p> 
                             </div>
+                            <div class="show-comment" ng-show="selectedShow">
+                                <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
+                                <div class="show-comment-combobox">
+                                    <wij-combobox data-source="data.comments" selected-value="tuple.comment" style="width: 100%" is-editable="false">
+                                        <data>
+                                            <label bind="hint"></label>
+                                            <value bind="comment"></value>
+                                        </data>
+                                    </wij-combobox>     
+                                </div>
 
-                            <div class="buttons-container">
-                                <input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)"/>
-                                <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
+                                <div class="buttons-container">
+                                    <input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)"/>
+                                    <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
+                                </div>
                             </div>
                         </div>
                     </li>
