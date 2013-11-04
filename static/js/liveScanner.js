@@ -166,8 +166,6 @@ function MarkedListCtrl($scope, $injector, $http, Data) {
     method: "GET"
   }).success(function(data, status, headers, config) {
     $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
-    if ($scope.data.showsPropertiesOfInterest.length < 1)
-      $scope.data.showsPropertiesOfInterest = new ShowsArray(getData()).getShowsIdTitleLogoDescription().sortByTitle();
   }).error(function(data, status, headers, config) {
     $scope.status = status;
   });
