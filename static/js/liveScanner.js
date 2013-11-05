@@ -10,7 +10,7 @@ ShowsArray.prototype = [];
 
 ShowsArray.prototype.getShowsIdTitleLogoDescription = function () {
   var result = new ShowsArray();
-  for (i=0; i<this.length; i++) {
+  for (i = 0; i < this.length; i++) {
     var tmp = ({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo,
     description: this[i].description, checkboxState: false});
     if (tmp.description == "") tmp.description = "Sem descrição disponível."
@@ -21,7 +21,7 @@ ShowsArray.prototype.getShowsIdTitleLogoDescription = function () {
 
 ShowsArray.prototype.filterByPattern = function(condition, pattern) {
   var result = [];
-  for (i=0; i<this.length; i++) {
+  for (i = 0; i < this.length; i++) {
     if (condition(pattern,this[i])) {
       result.push(this[i]);
     }
@@ -31,7 +31,7 @@ ShowsArray.prototype.filterByPattern = function(condition, pattern) {
 
 ShowsArray.prototype.sortByProperty = function(property) {
   this.sort(function(showA, showB) {
-    return showA[property].toLowerCase() > showB[property].toLowerCase();
+    return showA[property].toLowerCase() > showB[property].toLowerCase() ? 1 : -1;
   });
   return this;
 };
@@ -137,7 +137,7 @@ function GenericListCtrl($scope, Data) {
 
 
 
-function UnMarkedListCtrl($scope, $injector, Data) {
+function UnMarkedListCtrl($scope, $injector, $http, Data) {
   $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
   function titleMatchesPattern(pattern, show) {
@@ -148,27 +148,28 @@ function UnMarkedListCtrl($scope, $injector, Data) {
   $scope.getFilteredShows = function() {
     return $scope.data.showsPropertiesOfInterest.filterByPattern(titleMatchesPattern, $scope.data.searchParameter);
   };
-};
-
-UnMarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
-
-
-
-function MarkedListCtrl($scope, $injector, $http, Data) {
-  $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
-
-  $scope.changeComment = function(show,comment) {
-    show.comment = comment;
-  };
 
   $http({
     url: "/programs",
     method: "GET"
   }).success(function(data, status, headers, config) {
     $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
+
   }).error(function(data, status, headers, config) {
     $scope.status = status;
   });
+};
+
+UnMarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
+
+
+
+function MarkedListCtrl($scope, $injector, Data) {
+  $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
+
+  $scope.changeComment = function(show,comment) {
+    show.comment = comment;
+  };
 };
 
 MarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
