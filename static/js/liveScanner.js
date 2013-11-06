@@ -108,14 +108,12 @@ function HeaderCtrl($scope, $http, Data) {
 
 function GenericListCtrl($scope, Data) {
   $scope.select = function(show) {
-    if (show.comment !== undefined && show.comment !== "") {
-      $scope.data.markedShows.push(show);
-      show.checkboxState = false;
+    $scope.data.markedShows.push(show);
+    show.checkboxState = false;
 
-      var index = $scope.data.showsPropertiesOfInterest.indexOf(show);
-      if (index > -1) {
-        $scope.data.showsPropertiesOfInterest.splice(index, 1);
-      }
+    var index = $scope.data.showsPropertiesOfInterest.indexOf(show);
+    if (index > -1) {
+      $scope.data.showsPropertiesOfInterest.splice(index, 1);
     }
   };
 

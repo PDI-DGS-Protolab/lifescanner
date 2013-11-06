@@ -49,6 +49,7 @@
         </header>
 
         <div class="main-container">
+
             <div class="shows-list-container" ng-controller="MarkedListCtrl">
                 <ul>
                     <li class="show marked-show" ng-repeat="tuple in data.markedShows" value={{tuple.id}}> 
@@ -69,7 +70,7 @@
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
        
                             <div class="show-comment-combobox">
-                                <wij-combobox data-source="data.comments" selected-value="comment" style="width: 100%" is-editable="false">
+                                <wij-combobox data-source="data.comments" selected-value="comment" selected-index="tuple.index" style="width: 100%" is-editable="false">
                                     <data>
                                         <label bind="hint"></label>
                                         <value bind="comment"></value>
@@ -102,7 +103,7 @@
                             <div class="show-comment" ng-show="selectedShow">
                                 <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
                                 <div class="show-comment-combobox">
-                                    <wij-combobox data-source="data.comments" selected-value="tuple.comment" style="width: 100%" is-editable="false">
+                                    <wij-combobox data-source="data.comments" selected-value="tuple.comment" selected-index="tuple.index = data.defaultCommentValue" style="width: 100%" is-editable="false">
                                         <data>
                                             <label bind="hint"></label>
                                             <value bind="comment"></value>
