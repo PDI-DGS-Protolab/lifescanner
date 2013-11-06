@@ -25,8 +25,8 @@ header {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    padding: 18px 0 18px 20px;
     float: left;
+    padding: 18px 0 18px 20px;
     width: 15%;
 }
 

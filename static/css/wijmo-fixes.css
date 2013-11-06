@@ -1,0 +1,147 @@
+.wijmo-wijcombobox {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100% !important;
+}
+
+.wijmo-wijcombobox-wrapper {
+    box-shadow: none;
+}
+
+.wijmo-wijcombobox-wrapper.ui-state-active{
+    background-image: none !important;
+    border: 1px solid #a8a8a8 !important;
+    box-shadow: 0 0 2px 1px #98f1dc;
+    -moz-box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.wijmo-wijcombobox-wrapper.ui-state-focus{
+    background-image: none !important;
+    border: 1px solid #a8a8a8 !important;
+    box-shadow: 0 0 2px 1px #98f1dc;
+    -moz-box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.wijmo-wijcombobox-wrapper.ui-state-hover{
+    background-image: none !important;
+    border: 1px solid #a8a8a8 !important;
+    box-shadow: 0 0 2px 1px #98f1dc;
+    -moz-box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.wijmo-wijcombobox-input {
+    color: #000 !important;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif !important;
+}
+
+.wijmo-wijcombobox-input.ui-state-active {
+    box-shadow: 0 0 2px 1px #98f1dc;
+    -moz-box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.wijmo-wijcombobox-input.ui-state-focus {
+    box-shadow: 0 0 2px 1px #98f1dc;
+    -moz-box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.wijmo-wijcombobox-input.ui-state-hover {
+    box-shadow: 0 0 2px 1px #98f1dc;
+    -moz-box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.wijmo-wijcombobox-trigger.ui-state-active {
+    background: linear-gradient(to bottom, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%) !important;
+    -moz-linear-gradient(top, rgba(243,243,243,1) 0%, rgba(204,204,204,1) 100%);
+    -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(243,243,243,1)), color-stop(100%,rgba(204,204,204,1)));
+    -webkit-linear-gradient(top, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%);
+    
+    border: 1px solid #a8a8a8 !important;
+    text-shadow: none !important;
+}
+
+.wijmo-wijcombobox-trigger.ui-state-focus {
+    background: linear-gradient(to bottom, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%) !important;
+    -moz-linear-gradient(top, rgba(243,243,243,1) 0%, rgba(204,204,204,1) 100%);
+    -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(243,243,243,1)), color-stop(100%,rgba(204,204,204,1)));
+    -webkit-linear-gradient(top, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%);
+    
+    border: 1px solid #a8a8a8 !important;
+    text-shadow: none !important;
+}
+
+.wijmo-wijcombobox-trigger.ui-state-hover {
+    background: linear-gradient(to bottom, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%) !important;
+    -moz-linear-gradient(top, rgba(243,243,243,1) 0%, rgba(204,204,204,1) 100%);
+    -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(243,243,243,1)), color-stop(100%,rgba(204,204,204,1)));
+    -webkit-linear-gradient(top, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%);
+    
+    border: 1px solid #a8a8a8 !important;
+    text-shadow: none !important;
+}
+
+.wijmo-wijlist-item {
+    color: #000 !important;
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
+}
+
+.wijmo-wijlist-item.ui-state-active {
+    background: rgba(152, 241, 220, .4);
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijlist-item.ui-state-focus {
+    background: rgba(152, 241, 220, .4);
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijlist-item.ui-state-hover {
+    background: rgba(152, 241, 220, .4);
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijlist-item-selected {
+    background: rgba(152, 241, 220, .4) !important;
+    text-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijcombobox-selecteditem {
+    background: none !important;
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijcombobox-selecteditem.ui-state-active {
+    background: rgba(152, 241, 220, .4) !important;
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijcombobox-selecteditem.ui-state-focus {
+    background: rgba(152, 241, 220, .4) !important;
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wijmo-wijcombobox-selecteditem.ui-state-hover {
+    background: rgba(152, 241, 220, .4) !important;
+    text-shadow: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
