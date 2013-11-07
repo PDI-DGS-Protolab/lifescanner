@@ -28,7 +28,7 @@ li {
     display: inline;
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px 10px 20px 10px;
     width: 100%;
 }
 
@@ -41,6 +41,7 @@ li {
     cursor: pointer;
     font-weight: bold;
     height: 30px;
+    margin: 0;
     transition: background-color 500ms ease-in-out;
     -moz-transition: background-color 500ms ease-in-out;
     -ms-transition: background-color 500ms ease-in-out;
@@ -65,12 +66,17 @@ li {
 .show-description {
     cursor: default;
     float: right;
+    padding-top: 0;
     width: 95%;
 }
 
 .show-description p {
+    
+}
+
+.show-contents-separator {
     border-bottom: solid 2px #b8b8b8;
-    padding-bottom: 10px;
+    width: 100%;
 }
 
 .show-comment {
@@ -79,7 +85,6 @@ li {
     -webkit-box-sizing: border-box;
     clear: both;
     float: right;
-    margin-bottom: 10px;
     width: 95%;
 }
 
@@ -88,35 +93,33 @@ li {
     font-style: italic;
 }
 
-.show-comment-left-section {
+.show-comment-combobox {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     float: left;
-    padding-right: 5px;
-    width: 50%;
+    padding-bottom: 20px;
+    width: 70%;
 }
 
-.show-comment-right-section {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    float: left;
-    padding-left: 5px;
-    width: 50%;
-}
-
-.show-comment-checkbox {
-    float: left;
-}
-
-.show-comment-option {
-    float: left;
-    font: italic 14px century gothic, URW gothic L, Helvetica, Sans-Serif;
+.show-comment-combobox select {
+    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
+    height: 25px;
     width: 100%;
 }
 
-.marked-show .show-comment {
+.show-comment-combobox select:focus {
+    box-shadow: 0 0 2px 1px #98f1dc;
+    outline: none;
+}
+
+.show-comment-combobox option {
+    float: left;
+    font: italic bold 14px century gothic, URW gothic L, Helvetica, Sans-Serif;
+    width: 100%;
+}
+
+.marked-show {
     width: 100%;
 }
 
@@ -129,8 +132,9 @@ li {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    float: right;
-    width: 100%;
+    clear: both;
+    float: left;
+    width: 70%;
 }
 
 .default-button {
@@ -158,6 +162,7 @@ li {
 .cancel-comment-button {
     background-color: #dbdbdb;
     clear: both;
+    float: left;
 }
 
 .cancel-comment-button:hover {
@@ -175,7 +180,8 @@ li {
 
 .modify-comment-button {
     background-color: rgba(152, 241, 220, .5);
-    float: right;
+    float: left;
+    margin-left: 10px;
 }
 
 .modify-comment-button:hover {
