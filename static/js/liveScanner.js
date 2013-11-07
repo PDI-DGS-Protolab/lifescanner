@@ -12,7 +12,7 @@ ShowsArray.prototype.getShowsIdTitleLogoDescription = function () {
   var result = new ShowsArray();
   for (i = 0; i < this.length; i++) {
     var tmp = ({id: this[i].id, title: this[i].title, logoUrl: this[i].channel.logo,
-    description: this[i].description, checkboxState: false});
+    description: this[i].description});
     if (tmp.description == "") tmp.description = "Sem descrição disponível."
     result.push(tmp);
   }
@@ -152,7 +152,10 @@ function UnMarkedListCtrl($scope, $injector, $http, Data) {
     method: "GET"
   }).success(function(data, status, headers, config) {
     $scope.data.showsPropertiesOfInterest = new ShowsArray(data).getShowsIdTitleLogoDescription().sortByTitle();
-
+    $scope.data.showsPropertiesOfInterest.map(function(show) {
+      show.checkboxState = false;
+      show.index = $scope.data.defaultCommentValue;
+    });
   }).error(function(data, status, headers, config) {
     $scope.status = status;
   });
@@ -165,7 +168,7 @@ UnMarkedListCtrl.prototype = Object.create(GenericListCtrl.prototype);
 function MarkedListCtrl($scope, $injector, Data) {
   $injector.invoke(GenericListCtrl, this, {$scope: $scope, Data: Data});
 
-  $scope.changeComment = function(show,comment) {
+  $scope.changeComment = function(show, comment) {
     show.comment = comment;
   };
 };
