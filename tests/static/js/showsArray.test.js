@@ -42,6 +42,88 @@ describe("ShowsArray", function () {
       expect(arr.getShowsIdTitleLogoDescription()[0].description).not.toBe("");
     });
   });
+function filterByPropertyId(var1,var2){
+
+    return var2["id"] === var1;
+}
+function allwaysFalse(var1,var2){
+
+    return false;
+}
+describe("filterByPatternCtrl", function() {
+    
+    var arr;
+
+    beforeEach(function () {
+      arr = new ShowsArray([
+        {id: 1234, title: 'element1', channel: {logo: null}, description: ""}, //0
+        {id: 2640, title: 'element2', channel: {logo: null}, description: ""}, //1
+        {id: 3000, title: 'ELEMENT3', channel: {logo: null}, description: ""}, //2
+        {id: 4000, title: 'ELEmenT4', channel: {logo: null}, description: ""}, //3
+        {id: 5000, title: 'E'       , channel: {logo: null}, description: ""}, //4
+        {id: 5640, title: 'aaaaaaaa', channel: {logo: null}, description: ""}, //5
+        {id: 6450, title: 'zzzzzzzz', channel: {logo: null}, description: ""}  //6
+      ]);
+    });
+
+    it("Filtering an empty array", function() {
+        var arrayTest = new ShowsArray("");
+        expect(arrayTest.filterByPattern(filterByPropertyId,1234)).toEqual([]);
+    });
+
+    it("Expecting just one result", function() {
+        expect(arr.filterByPattern(filterByPropertyId,5000)[0]).toEqual(arr[4]);
+    });
+    
+    it("No results expect", function() {
+        expect(arr.filterByPattern(allwaysFalse,6450)).toEqual([]);
+    });    
+  });
+
+describe("SortByPropertyCtrl", function() {
+    
+    var arr, sort_arr;
+
+    beforeEach(function () {
+      arr = new ShowsArray([
+        {id: 1234, title: 'element1', channel: {logo: null}, description: ""}, //0
+        {id: 2640, title: 'element2', channel: {logo: null}, description: ""}, //1
+        {id: 3000, title: 'ELEMENT3', channel: {logo: null}, description: ""}, //2
+        {id: 4000, title: 'ELEmenT4', channel: {logo: null}, description: ""}, //3
+        {id: 5000, title: 'E'       , channel: {logo: null}, description: ""}, //4
+        {id: 5640, title: 'aaaaaaaa', channel: {logo: null}, description: ""}, //5
+        {id: 6450, title: 'zzzzzzzz', channel: {logo: null}, description: ""}  //6
+      ]);
+      sort_arr = new ShowsArray(arr);
+      sort_arr.sortByProperty('title');
+    });
+
+    it("Same number of elements", function() {
+      expect(sort_arr.length).toBe(arr.length);
+    });
+
+    it("Same elements", function() {
+      for (var e = 0; e < arr.length; ++e) {
+        expect(sort_arr).toContain(arr[e]);
+      }
+    });
+       
+    it("Check correct sorting", function() {
+      expect(sort_arr[0].title).toBe(arr[5].title);
+      expect(sort_arr[sort_arr.length - 1].title).toBe(arr[arr.length - 1].title);
+      expect(sort_arr[1].title).toBe(arr[4].title);      
+      expect(sort_arr[3].title).toBe(arr[1].title);
+      expect(sort_arr[4].title).toBe(arr[2].title);
+      expect(sort_arr[5].title).toBe(arr[3].title);
+    });
+
+    it("Respecting order of input when property values are equals", function() {
+      sort_arr.sortByProperty('description');
+      for (var e = 0; e < arr.length; ++e) {
+        expect(sort_arr).toContain(arr[e]);
+      }
+    });
+});
 
   describe("sortByTitleCtrl", function () {
 
@@ -81,3 +163,5 @@ describe("ShowsArray", function () {
     });
   });
 });
+
+
