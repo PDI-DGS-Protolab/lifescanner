@@ -40,31 +40,11 @@ describe('HeaderCtrl', function () {
                 '$scope': scope,
                 '$httpBackend' : httpBackend
             });
-
-
-            // // Set up the mock http service responses
-            // $httpBackend = $injector.get('$httpBackend');
-            // // backend definition common for all tests
-            // // $httpBackend.when('POST', '/suggestions/').respond(1);
-            // // Get hold of a scope (i.e. the root scope)
-            // $rootScope = $injector.get('$rootScope');
-            // // The $controller service is used to create instances of controllers
-            // var $controller = $injector.get('$controller');
-            // createController = function() {
-            //     return $controller('HeaderCtrl', {
-            //         '$scope' : $rootScope
-            //     });
-            // };
         }));
-        // afterEach(function() {
-        //     $httpBackend.verifyNoOutstandingExpectation();
-        //     $httpBackend.verifyNoOutstandingRequest();
-        // });
-
+       
         it("when there are 5 suggestions, there is a POST http call to /suggestions", inject(function ($httpBackend) {
             $httpBackend.expectPOST('/suggestions/').respond(200, 1);
             scope.data.markedShows = ['a', 'b', 'c', 'd', 'e'];
-            // we don't want pop-ups at the test suite
             spyOn(window, 'alert').andCallFake(function() {  
                 return 1;  
             });

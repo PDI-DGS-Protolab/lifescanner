@@ -21,7 +21,7 @@ describe('GenericListCtrl', function () {
         }));
 
 
-   describe(' when attempting fake HTTP connections for getting the source API content', function() {
+   describe('When attempting fake HTTP connections for getting the source API content', function() {
       it("should perform GET http call to /programs", inject(function ($httpBackend) {
         $httpBackend.expectGET('/programs');
         var controller = createController();
@@ -32,7 +32,7 @@ describe('GenericListCtrl', function () {
 
     describe('SelectCtrl', function() {
         
-      it('correct deleting from unselected list', function () {
+      it('Selecting a show from showsPropertiesOfInterest list, it should disapear from this list', function () {
         httpBackend.expectGET('/programs');
         var controller = createController();
         $httpBackend.flush();
@@ -47,7 +47,7 @@ describe('GenericListCtrl', function () {
         expect(scope.data.showsPropertiesOfInterest.length).toBe(1);
       });
 
-      it('correct move from unselected list to selected list', function () {
+      it('Selecting a show from showsPropertiesOfInterest list, it should be in the last position of markedShows list', function () {
         $httpBackend.expectGET('/programs');
         var controller = createController();
         $httpBackend.flush();
@@ -64,7 +64,7 @@ describe('GenericListCtrl', function () {
         expect(scope.data.markedShows[0]).toBe(temp);
       });
 
-      it('checkboxState equals to false', function () {
+      it('Selecting a show from showsPropertiesOfInterest list, it should have checkbox property equal to false', function () {
         $httpBackend.expectGET('/programs');
         var controller = createController();
         $httpBackend.flush();
@@ -77,7 +77,7 @@ describe('GenericListCtrl', function () {
 
   describe('unSelectCtrl', function () {
 
-    it('Correct deleting from selected list', function () {
+    it('Unselecting a show from markedShows list, it should disapear from this list', function () {
       $httpBackend.expectGET('/programs');
       var controller = createController();
       $httpBackend.flush();
@@ -85,7 +85,6 @@ describe('GenericListCtrl', function () {
 
       var foo = scope.data.showsPropertiesOfInterest[1];
 
-      // We move all the elements of showsPropertiesOfInterest to markedShows
       scope.select(scope.data.showsPropertiesOfInterest[0]);
       scope.$digest();
       scope.select(scope.data.showsPropertiesOfInterest[0]);
@@ -107,7 +106,7 @@ describe('GenericListCtrl', function () {
       expect(scope.data.markedShows.length).toBe(0);   
     });
 
-    it('Correct move from selected list to unselected list', function () {
+    it('Unselecting a show from markedShows list, it should increment by 1 showsPropertiesOfInterest length', function () {
       $httpBackend.expectGET('/programs');
       var controller = createController();
       $httpBackend.flush();
@@ -131,7 +130,7 @@ describe('GenericListCtrl', function () {
       expect(scope.data.showsPropertiesOfInterest[0]).toBe(temp);
     });
 
-    it('Correct ordered insert in unselected list', function () {
+    it('Unselecting a show from markedShows list, it should be in showsPropertiesOfInterest list ordered by title', function () {
       $httpBackend.expectGET('/programs');
       var controller = createController();
       $httpBackend.flush();
@@ -157,7 +156,7 @@ describe('GenericListCtrl', function () {
 
   describe('toggleCheckboxCtrl', function () {
 
-    it('Correct change of checkboxState', function () {
+    it('Correct change of property checkbox in a show', function () {
       $httpBackend.expectGET('/programs');
       var controller = createController();
       $httpBackend.flush();

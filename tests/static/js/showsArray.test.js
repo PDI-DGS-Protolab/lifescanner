@@ -2,44 +2,38 @@
 describe("ShowsArray", function () {
   describe("getShowsIdTitleLogoDescriptionCrtl", function () {
 
-    var arr;
+    var showsArray;
 
-    it('empty ShowsArray should return 0 elements ShowsArray', function () {
-      arr = new ShowsArray("");
-      expect(arr.getShowsIdTitleLogoDescription()).not.toContain(" ");
-      expect(arr.getShowsIdTitleLogoDescription().length).not.toBeGreaterThan(0);
+    it('With an empty ShowsArray it should return 0 elements ShowsArray', function () {
+      showsArray= new ShowsArray("");
+      expect(showsArray.getShowsIdTitleLogoDescription()).not.toContain(" ");
+      expect(showsArray.getShowsIdTitleLogoDescription().length).not.toBeGreaterThan(0);
 
-      arr = new ShowsArray();
-      expect(arr.getShowsIdTitleLogoDescription()).not.toContain(" ");
-      expect(arr.getShowsIdTitleLogoDescription().length).not.toBeGreaterThan(0);
+      showsArray= new ShowsArray();
+      expect(showsArray.getShowsIdTitleLogoDescription()).not.toContain(" ");
+      expect(showsArray.getShowsIdTitleLogoDescription().length).not.toBeGreaterThan(0);
     });
 
-    it('Return same order, same length and not selected', function () {
-      //var arr = new ShowsArray("/mocks/model1.json");
-      //arr.getShowsIdTitleLogoDescription();
-
-      //expect(arr.length).toBeGreaterThan(0);
-      arr = new ShowsArray([
+    it('Having 2 shows, it returns them in the same order, with the same length and it doesn\'t select the checkbox state', function () {
+      showsArray= new ShowsArray([
         {id: 1234, title: 'element1', channel: {logo: null}, description: ""},
         {id: 1000, title: 'element2', channel: {logo: null}, description: ""}
       ]);
-      //expect(arr.getShowsIdTitleLogoDescription()).toContain("1234");
-      expect(arr.getShowsIdTitleLogoDescription().length).toBe(arr.length);
-      arr = arr;      
-      expect(arr.getShowsIdTitleLogoDescription().length).toBe(arr.length);
-      for (var i = 0; i < arr.length; ++i) {
-        expect(arr.getShowsIdTitleLogoDescription()[i].id).toBe(arr[i].id);
-        expect(arr.getShowsIdTitleLogoDescription()[i].checkboxState).toBe(false);
+      expect(showsArray.getShowsIdTitleLogoDescription().length).toBe(showsArray.length);
+      expect(showsArray.getShowsIdTitleLogoDescription().length).toBe(showsArray.length);
+      for (var i = 0; i < showsArray.length; ++i) {
+        expect(showsArray.getShowsIdTitleLogoDescription()[i].id).toBe(showsArray[i].id);
+        expect(showsArray.getShowsIdTitleLogoDescription()[i].checkboxState).toBe(false);
       }
     });
 
-    it('Change empty descriptions', function () {
-      arr = new ShowsArray([
+    it('Change the empty descriptions for "Sem descrição disponível"', function () {
+      showsArray= new ShowsArray([
         {id: 1234, title: 'element1', channel: {logo: null}, description: ""}
       ]);
-      expect(arr.getShowsIdTitleLogoDescription().length).toBe(arr.length);
-      expect(arr.getShowsIdTitleLogoDescription()[0].description).not.toBe(arr[0].description);
-      expect(arr.getShowsIdTitleLogoDescription()[0].description).not.toBe("");
+      expect(showsArray.getShowsIdTitleLogoDescription().length).toBe(showsArray.length);
+      expect(showsArray.getShowsIdTitleLogoDescription()[0].description).not.toBe(showsArray[0].description);
+      expect(showsArray.getShowsIdTitleLogoDescription()[0].description).not.toBe("");
     });
   });
 function filterByPropertyId(var1,var2){
@@ -52,10 +46,10 @@ function allwaysFalse(var1,var2){
 }
 describe("filterByPatternCtrl", function() {
     
-    var arr;
+    var showsArray;
 
     beforeEach(function () {
-      arr = new ShowsArray([
+      showsArray= new ShowsArray([
         {id: 1234, title: 'element1', channel: {logo: null}, description: ""}, //0
         {id: 2640, title: 'element2', channel: {logo: null}, description: ""}, //1
         {id: 3000, title: 'ELEMENT3', channel: {logo: null}, description: ""}, //2
@@ -66,71 +60,74 @@ describe("filterByPatternCtrl", function() {
       ]);
     });
 
-    it("Filtering an empty array", function() {
+    it("Filtering an empty ShowsArray it should return 0 elements ShowsArray", function() {
         var arrayTest = new ShowsArray("");
         expect(arrayTest.filterByPattern(filterByPropertyId,1234)).toEqual([]);
+        expect(arrayTest.filterByPattern(filterByPropertyId,1234).length).not.toBeGreaterThan(0);
     });
 
-    it("Expecting just one result", function() {
-        expect(arr.filterByPattern(filterByPropertyId,5000)[0]).toEqual(arr[4]);
+    it("When only one show is filtered it should return only 1 element ShowsArray", function() {
+        expect(showsArray.filterByPattern(filterByPropertyId,5000)[0]).toEqual(showsArray[4]);
+        expect(showsArray.filterByPattern(filterByPropertyId,5000).length).toBe(1);
     });
     
-    it("No results expect", function() {
-        expect(arr.filterByPattern(allwaysFalse,6450)).toEqual([]);
+    it("When all the shows are filtered it should return 0 elements ShowsArray", function() {
+        expect(showsArray.filterByPattern(allwaysFalse,6450)).toEqual([]);
+        expect(showsArray.filterByPattern(allwaysFalse,6450).length).not.toBeGreaterThan(0);
     });    
   });
 
 describe("SortByPropertyCtrl", function() {
     
-    var arr, sort_arr;
+    var showsArray, sort_showsArray;
 
     beforeEach(function () {
-      arr = new ShowsArray([
-        {id: 1234, title: 'element1', channel: {logo: null}, description: ""}, //0
-        {id: 2640, title: 'element2', channel: {logo: null}, description: ""}, //1
-        {id: 3000, title: 'ELEMENT3', channel: {logo: null}, description: ""}, //2
-        {id: 4000, title: 'ELEmenT4', channel: {logo: null}, description: ""}, //3
-        {id: 5000, title: 'E'       , channel: {logo: null}, description: ""}, //4
-        {id: 5640, title: 'aaaaaaaa', channel: {logo: null}, description: ""}, //5
-        {id: 6450, title: 'zzzzzzzz', channel: {logo: null}, description: ""}  //6
+      showsArray= new ShowsArray([
+        {id: 1234, title: 'element1', channel: {logo: null}, description: ""}, 
+        {id: 2640, title: 'element2', channel: {logo: null}, description: ""}, 
+        {id: 3000, title: 'ELEMENT3', channel: {logo: null}, description: ""}, 
+        {id: 4000, title: 'ELEmenT4', channel: {logo: null}, description: ""}, 
+        {id: 5000, title: 'E'       , channel: {logo: null}, description: ""}, 
+        {id: 5640, title: 'aaaaaaaa', channel: {logo: null}, description: ""}, 
+        {id: 6450, title: 'zzzzzzzz', channel: {logo: null}, description: ""} 
       ]);
-      sort_arr = new ShowsArray(arr);
-      sort_arr.sortByProperty('title');
+      sort_showsArray= new ShowsArray(showsArray);
+      sort_showsArray.sortByProperty('title');
     });
 
-    it("Same number of elements", function() {
-      expect(sort_arr.length).toBe(arr.length);
+    it("Sorted a ShowsArray it should have the same length that it have before sorting", function() {
+      expect(sort_showsArray.length).toBe(showsArray.length);
     });
 
-    it("Same elements", function() {
-      for (var e = 0; e < arr.length; ++e) {
-        expect(sort_arr).toContain(arr[e]);
+    it("Sorted ShowsArray should have the same elements, and in the same order that it have before sorting", function() {
+      for (var e = 0; e < showsArray.length; ++e) {
+        expect(sort_showsArray).toContain(showsArray[e]);
       }
     });
        
-    it("Check correct sorting", function() {
-      expect(sort_arr[0].title).toBe(arr[5].title);
-      expect(sort_arr[sort_arr.length - 1].title).toBe(arr[arr.length - 1].title);
-      expect(sort_arr[1].title).toBe(arr[4].title);      
-      expect(sort_arr[3].title).toBe(arr[1].title);
-      expect(sort_arr[4].title).toBe(arr[2].title);
-      expect(sort_arr[5].title).toBe(arr[3].title);
+    it("Checking if the function has sorted correctly by checking title", function() {
+      expect(sort_showsArray[0].title).toBe(showsArray[5].title);
+      expect(sort_showsArray[sort_showsArray.length - 1].title).toBe(showsArray[showsArray.length - 1].title);
+      expect(sort_showsArray[1].title).toBe(showsArray[4].title);      
+      expect(sort_showsArray[3].title).toBe(showsArray[1].title);
+      expect(sort_showsArray[4].title).toBe(showsArray[2].title);
+      expect(sort_showsArray[5].title).toBe(showsArray[3].title);
     });
 
     it("Respecting order of input when property values are equals", function() {
-      sort_arr.sortByProperty('description');
-      for (var e = 0; e < arr.length; ++e) {
-        expect(sort_arr).toContain(arr[e]);
+      sort_showsArray.sortByProperty('description');
+      for (var e = 0; e < showsArray.length; ++e) {
+        expect(sort_showsArray).toContain(showsArray[e]);
       }
     });
 });
 
   describe("sortByTitleCtrl", function () {
 
-    var arr, sort_arr;
+    var showsArray, sort_showsArray;
 
     beforeEach(function () {
-      arr = new ShowsArray([
+      showsArray= new ShowsArray([
         {id: 1234, title: 'element1', channel: {logo: null}, description: ""}, //0
         {id: 2640, title: 'element2', channel: {logo: null}, description: ""}, //1
         {id: 3000, title: 'ELEMENT3', channel: {logo: null}, description: ""}, //2
@@ -139,27 +136,27 @@ describe("SortByPropertyCtrl", function() {
         {id: 5640, title: 'aaaaaaaa', channel: {logo: null}, description: ""}, //5
         {id: 6450, title: 'zzzzzzzz', channel: {logo: null}, description: ""}  //6
       ]);
-      sort_arr = new ShowsArray(arr);
-      sort_arr.sortByTitle();
+      sort_showsArray= new ShowsArray(showsArray);
+      sort_showsArray.sortByTitle();
     });
 
-    it("Same number of elements", function() {
-      expect(sort_arr.length).toBe(arr.length);
+    it("Sorted a ShowsArray by title, it should have the same length that it have before sorting", function() {
+      expect(sort_showsArray.length).toBe(showsArray.length);
     });
 
-    it("Same elements", function() {
-      for (var e = 0; e < arr.length; ++e) {
-        expect(sort_arr).toContain(arr[e]);
+    it("Sorted ShowsArray by title, it should have the same elements, and in the same order that it have before sorting", function() {
+      for (var e = 0; e < showsArray.length; ++e) {
+        expect(sort_showsArray).toContain(showsArray[e]);
       }
     });
 
-    it("Check correct sorting", function() {
-      expect(sort_arr[0].title).toBe(arr[5].title);
-      expect(sort_arr[sort_arr.length - 1].title).toBe(arr[arr.length - 1].title);
-      expect(sort_arr[1].title).toBe(arr[4].title);      
-      expect(sort_arr[3].title).toBe(arr[1].title);
-      expect(sort_arr[4].title).toBe(arr[2].title);
-      expect(sort_arr[5].title).toBe(arr[3].title);
+    it("Checking if the function has sorted by title correctly", function() {
+      expect(sort_showsArray[0].title).toBe(showsArray[5].title);
+      expect(sort_showsArray[sort_showsArray.length - 1].title).toBe(showsArray[showsArray.length - 1].title);
+      expect(sort_showsArray[1].title).toBe(showsArray[4].title);      
+      expect(sort_showsArray[3].title).toBe(showsArray[1].title);
+      expect(sort_showsArray[4].title).toBe(showsArray[2].title);
+      expect(sort_showsArray[5].title).toBe(showsArray[3].title);
     });
   });
 });
