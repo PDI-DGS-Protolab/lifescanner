@@ -18,6 +18,7 @@
         <!-- Angular -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
         <script src="http://cdn.wijmo.com/interop/angular.wijmo.3.20132.8.min.js"></script>
+        <!--<script src="http://cdn.wijmo.com/external/angular.wijmo.js"></script>-->
 
         <!-- Our own scripts and CSS -->
         <script src="../static/js/liveScanner.js"></script>
@@ -50,7 +51,6 @@
         </header>
 
         <div class="main-container">
-
             <div class="shows-list-container" ng-controller="MarkedListCtrl">
                 <ul>
                     <li class="show marked-show" ng-repeat="tuple in data.markedShows" value={{tuple.id}}> 
@@ -62,7 +62,6 @@
                             <input class="default-button cancel-comment-button" type="button" value="Excluir" ng-click="unSelect(tuple)"/>
                             <input class="default-button modify-comment-button" type="button" value="Modificar" ng-click="seeShowItems = !seeShowItems" ng-show="!seeShowItems"/>
                         </div>
-
                         <div class="show-description">
                             <p ng-show="selectedShow"> {{ tuple.description }}</p> 
                         </div>
@@ -71,7 +70,7 @@
                             <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
        
                             <div class="show-comment-combobox">
-                                <wij-combobox data-source="data.comments" selected-value="comment" selected-index="tuple.index" style="width: 100%" is-editable="false">
+                                <wij-combobox data-source="data.comments" selected-value="comment" selected-index="tuple.index" is-editable="false">
                                     <data>
                                         <label bind="hint"></label>
                                         <value bind="comment"></value>
@@ -90,34 +89,35 @@
             <div class="shows-list-container" ng-controller="UnMarkedListCtrl">
                 <ul>
                     <li class="show unmarked-show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
-                        <div class="show-header">
-                            <input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)" ng-checked="tuple.checkboxState" value={{tuple.id}}>
-                            <p class="show-title" ng-click="seeShowDescription = !seeShowDescription">
-                                {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
-                            </p>
-                        </div>
-
-                        <div>
-                            <div class="show-description">
-                                <p ng-show="seeShowDescription"> {{ tuple.description }}</p> 
+                        <wij-expander expanded="false">
+                            <div class="show-header" >
+                                <input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)" ng-checked="tuple.checkboxState" value={{tuple.id}}>
+                                <p class="show-title">
+                                    {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
+                                </p>
                             </div>
-                            <div class="show-comment" ng-show="selectedShow">
-                                <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
-                                <div class="show-comment-combobox">
-                                    <wij-combobox data-source="data.comments" selected-value="tuple.comment" selected-index="tuple.index" style="width: 100%" is-editable="false">
-                                        <data>
-                                            <label bind="hint"></label>
-                                            <value bind="comment"></value>
-                                        </data>
-                                    </wij-combobox>     
+                            <div style="position:inherit">
+                                <div class="show-description">
+                                    <p> {{ tuple.description }}</p> 
                                 </div>
+                                <div class="show-comment" ng-show="selectedShow">
+                                    <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
+                                    <div class="show-comment-combobox">
+                                        <wij-combobox data-source="data.comments" selected-value="tuple.comment" selected-index="tuple.index"  is-editable="false">
+                                            <data>
+                                                <label bind="hint"></label>
+                                                <value bind="comment"></value>
+                                            </data>
+                                        </wij-combobox>     
+                                    </div>
 
-                                <div class="buttons-container">
-                                    <input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)"/>
-                                    <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
+                                    <div class="buttons-container">
+                                        <input class="default-button cancel-comment-button" type="button" value="Cancelar" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)"/>
+                                        <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="select(tuple)"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </wij-expander>
                     </li>
                 </ul>
             </div>

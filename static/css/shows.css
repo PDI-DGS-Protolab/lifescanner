@@ -99,13 +99,14 @@ li {
     -webkit-box-sizing: border-box;
     float: left;
     padding-bottom: 20px;
-    width: 70%;
+    width: 96%;
+    position: inherit;
 }
 
 .show-comment-combobox select {
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
     height: 25px;
-    width: 100%;
+    width: 96%;
 }
 
 .show-comment-combobox select:focus {
@@ -116,7 +117,7 @@ li {
 .show-comment-combobox option {
     float: left;
     font: italic bold 14px century gothic, URW gothic L, Helvetica, Sans-Serif;
-    width: 100%;
+    width: 96%;
 }
 
 .marked-show {
