@@ -54,34 +54,39 @@
             <div class="shows-list-container" ng-controller="MarkedListCtrl">
                 <ul>
                     <li class="show marked-show" ng-repeat="tuple in data.markedShows" value={{tuple.id}}> 
-                        <div class="show-header">
-                            <p class="show-title" ng-click="selectedShow = !selectedShow">
-                                {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}"> 
-                            </p>
-                            <p> {{ tuple.comment }} </p> 
-                            <input class="default-button cancel-comment-button" type="button" value="Excluir" ng-click="unSelect(tuple)"/>
-                            <input class="default-button modify-comment-button" type="button" value="Modificar" ng-click="seeShowItems = !seeShowItems" ng-show="!seeShowItems"/>
-                        </div>
-                        <div class="show-description">
-                            <p ng-show="selectedShow"> {{ tuple.description }}</p> 
-                        </div>
-
-                        <div class="show-comment" ng-show="seeShowItems">
-                            <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
-       
-                            <div class="show-comment-combobox">
-                                <wij-combobox data-source="data.comments" selected-value="comment" selected-index="tuple.index" is-editable="false">
-                                    <data>
-                                        <label bind="hint"></label>
-                                        <value bind="comment"></value>
-                                    </data>
-                                </wij-combobox> 
+                        <wij-expander beforeCollapse="checkboxCollapse" beforeExpand="checkboxExpand">
+                            <div class="show-header">
+                                <p class="show-title">
+                                    {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}"> 
+                                </p>
                             </div>
+                            <div>
+                                <p> {{ tuple.comment }} </p> 
+                                <input class="default-button cancel-comment-button" type="button" value="Excluir" ng-click="unSelect(tuple)"/>
+                                <input class="default-button modify-comment-button" type="button" value="Modificar" ng-click="seeShowItems = !seeShowItems" ng-show="!seeShowItems"/>
+                            <div>
+                                <div class="show-description">
+                                    <p> {{ tuple.description }}</p> 
+                                </div>
 
-                            <div class="buttons-container">
-                                <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="changeComment(tuple,comment); seeShowItems = !seeShowItems"/>
+                                <div class="show-comment" ng-show="seeShowItems">
+                                    <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>
+               
+                                    <div class="show-comment-combobox">
+                                        <wij-combobox data-source="data.comments" selected-value="comment" selected-index="tuple.index" is-editable="false">
+                                            <data>
+                                                <label bind="hint"></label>
+                                                <value bind="comment"></value>
+                                            </data>
+                                        </wij-combobox> 
+                                    </div>
+
+                                    <div class="buttons-container">
+                                        <input class="default-button accept-comment-button" type="button" value="Salvar" ng-click="changeComment(tuple,comment); seeShowItems = !seeShowItems"/>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </wij-expander>
                     </li>
                 </ul>
             </div>
@@ -89,16 +94,16 @@
             <div class="shows-list-container" ng-controller="UnMarkedListCtrl">
                 <ul>
                     <li class="show unmarked-show" ng-repeat="tuple in getFilteredShows()" value={{tuple.id}}> 
-                        <wij-expander expanded="false">
-                            <div class="show-header" >
+                        <wij-expander beforeCollapse="checkboxCollapse" beforeExpand="checkboxExpand">
+                            <div class="show-header">
                                 <input class="show-checkbox" type="checkbox" ng-click="selectedShow = !selectedShow; toggleCheckbox(tuple)" ng-checked="tuple.checkboxState" value={{tuple.id}}>
                                 <p class="show-title">
                                     {{ tuple.title }} <img class="show-logo" src="{{ tuple.logoUrl }}">
                                 </p>
                             </div>
-                            <div style="position:inherit">
+                            <div>
                                 <div class="show-description">
-                                    <p> {{ tuple.description }}</p> 
+                                    <p>{{ tuple.description }}</p> 
                                 </div>
                                 <div class="show-comment" ng-show="selectedShow">
                                     <p class="show-comment-title">Use this hints to choose the proper reason for picking the content:<p>

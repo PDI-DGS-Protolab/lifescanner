@@ -105,6 +105,8 @@ function HeaderCtrl($scope, $http, Data) {
 };
 
 
+var changeCheckbox = false;
+var expanderCheckboxState = false;
 
 function GenericListCtrl($scope, Data) {
   $scope.select = function(show) {
@@ -128,6 +130,22 @@ function GenericListCtrl($scope, Data) {
 
   $scope.toggleCheckbox = function(show) {
       show.checkboxState = !show.checkboxState;
+      expanderCheckboxState = show.checkboxState;
+      changeCheckbox = true;
+  };
+
+  $scope.checkboxExpand = function(show) {
+      if (changeCheckbox && !expanderCheckboxState) {
+        changeCheckbox = false;
+        return false;
+      }
+  };
+
+  $scope.checkboxCollapse = function(show) {
+      if (changeCheckbox) {
+        changeCheckbox = false;
+        return false;
+      }
   };
 
   $scope.data = Data;
