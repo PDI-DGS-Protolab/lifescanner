@@ -1,6 +1,6 @@
 'use strict';
 describe("ShowsArray", function () {
-  describe("getShowsIdTitleLogoDescriptionCrtl", function () {
+  describe("getShowsIdTitleLogoDescription", function () {
 
     var showsArray;
 
@@ -44,7 +44,7 @@ function allwaysFalse(var1,var2){
 
     return false;
 }
-describe("filterByPatternCtrl", function() {
+describe("filterByPattern", function() {
     
     var showsArray;
 
@@ -77,7 +77,7 @@ describe("filterByPatternCtrl", function() {
     });    
   });
 
-describe("SortByPropertyCtrl", function() {
+describe("SortByProperty", function() {
     
     var showsArray, sort_showsArray;
 
@@ -107,7 +107,7 @@ describe("SortByPropertyCtrl", function() {
        
     it("Checking if the function has sorted correctly by checking title", function() {
       expect(sort_showsArray[0].title).toBe(showsArray[5].title);
-      expect(sort_showsArray[sort_showsArray.length - 1].title).toBe(showsArray[showsArray.length - 1].title);
+      expect(sort_showsArray[6].title).toBe(showsArray[6].title);
       expect(sort_showsArray[1].title).toBe(showsArray[4].title);      
       expect(sort_showsArray[3].title).toBe(showsArray[1].title);
       expect(sort_showsArray[4].title).toBe(showsArray[2].title);
@@ -122,7 +122,7 @@ describe("SortByPropertyCtrl", function() {
     });
 });
 
-  describe("sortByTitleCtrl", function () {
+  describe("sortByTitle", function () {
 
     var showsArray, sort_showsArray;
 
