@@ -42,20 +42,6 @@ li {
     font-weight: bold;
     height: 30px;
     margin: 0;
-    transition: background-color 500ms ease-in-out;
-    -moz-transition: background-color 500ms ease-in-out;
-    -ms-transition: background-color 500ms ease-in-out;
-    -o-transition: background-color 500ms ease-in-out;
-    -webkit-transition: background-color 500ms ease-in-out;
-}
-
-.unmarked-show .show-title:hover {
-    background-color: rgba(152, 241, 220, .4);
-    transition: background-color 500ms ease-in-out;
-    -moz-transition: background-color 500ms ease-in-out;
-    -ms-transition: background-color 500ms ease-in-out;
-    -o-transition: background-color 500ms ease-in-out;
-    -webkit-transition: background-color 500ms ease-in-out;
 }
 
 .show-logo {
@@ -65,7 +51,7 @@ li {
 
 .show-description {
     cursor: default;
-    float: right;
+    float: left;
     padding-top: 0;
     width: 95%;
 }
@@ -84,8 +70,8 @@ li {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     clear: both;
-    float: right;
-    width: 95%;
+    float: left;
+    width: 70%;
 }
 
 .show-comment-title {
@@ -99,25 +85,8 @@ li {
     -webkit-box-sizing: border-box;
     float: left;
     padding-bottom: 20px;
-    width: 96%;
+    width: 100%;
     position: inherit;
-}
-
-.show-comment-combobox select {
-    font-family: century gothic, URW gothic L, Helvetica, Sans-Serif;
-    height: 25px;
-    width: 96%;
-}
-
-.show-comment-combobox select:focus {
-    box-shadow: 0 0 2px 1px #98f1dc;
-    outline: none;
-}
-
-.show-comment-combobox option {
-    float: left;
-    font: italic bold 14px century gothic, URW gothic L, Helvetica, Sans-Serif;
-    width: 96%;
 }
 
 .marked-show {
@@ -135,7 +104,7 @@ li {
     -webkit-box-sizing: border-box;
     clear: both;
     float: left;
-    width: 70%;
+    width: 100%;
 }
 
 .default-button {

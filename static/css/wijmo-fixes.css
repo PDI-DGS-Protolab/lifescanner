@@ -1,3 +1,50 @@
+.wijmo-wijexpander .ui-expander-header {
+    border: 1px solid #666;
+    color: #262626;
+    text-shadow: none;
+}
+
+.ui-expander-header {
+    background: linear-gradient(to bottom, rgba(243,243,243,1) 0%,rgba(204,204,204,1) 100%);
+}
+
+.ui-expander-header.ui-state-active {
+    background: linear-gradient(to bottom, rgba(180,180,180,1) 0%,rgba(200,200,200,1) 100%) !important;
+    border: 1px solid #666;
+    color: #262626;
+    text-shadow: none;
+}
+
+.ui-expander-header.ui-state-focus {
+    background: linear-gradient(to bottom, rgba(180,180,180,1) 0%,rgba(200,200,200,1) 100%) !important;
+    border: 1px solid #666;
+    color: #262626;
+    text-shadow: none;
+}
+
+.ui-expander-header.ui-state-hover {
+    background: linear-gradient(to bottom, rgba(180,180,180,1) 0%,rgba(200,200,200,1) 100%) !important;
+    border: 1px solid #666;
+    color: #262626;
+    text-shadow: none;
+}
+
+.ui-state-default p {
+    text-shadow: none !important;
+}
+
+.ui-state-active p {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
+.ui-state-focus p {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
+.ui-state-hover p {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
 .wijmo-wijcombobox {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -9,7 +56,7 @@
     box-shadow: none;
 }
 
-.wijmo-wijcombobox-wrapper.ui-state-active{
+.wijmo-wijcombobox-wrapper.ui-state-active {
     background-image: none !important;
     border: 1px solid #a8a8a8 !important;
     box-shadow: 0 0 2px 1px #98f1dc;
@@ -17,7 +64,7 @@
     outline: none;
 }
 
-.wijmo-wijcombobox-wrapper.ui-state-focus{
+.wijmo-wijcombobox-wrapper.ui-state-focus {
     background-image: none !important;
     border: 1px solid #a8a8a8 !important;
     box-shadow: 0 0 2px 1px #98f1dc;
@@ -25,7 +72,7 @@
     outline: none;
 }
 
-.wijmo-wijcombobox-wrapper.ui-state-hover{
+.wijmo-wijcombobox-wrapper.ui-state-hover {
     background-image: none !important;
     border: 1px solid #a8a8a8 !important;
     box-shadow: 0 0 2px 1px #98f1dc;
@@ -34,8 +81,12 @@
 }
 
 .wijmo-wijcombobox-input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     color: #000 !important;
     font-family: century gothic, URW gothic L, Helvetica, Sans-Serif !important;
+    width: 100% !important;
 }
 
 .wijmo-wijcombobox-input.ui-state-active {
