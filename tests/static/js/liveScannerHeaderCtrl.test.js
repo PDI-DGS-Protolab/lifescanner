@@ -75,9 +75,7 @@ describe('HeaderCtrl', function () {
             });
         }));
 
-        // Ignored for now as we can't have the actual shows since we haven't tested it yet
-        // When we can define this test, it should change the suggestions but then proceed
-        // to set the suggestions to what they were before being called
+        // Ignored as we don't have a fixed test response to ensure the response is correct
         xit("when there are 5 correct suggestions, the server responds that 5 suggestions were updated", inject(function ($httpBackend) {
             spyOn(window, 'alert').andCallFake(function(msg) {  
                 return 1;  
