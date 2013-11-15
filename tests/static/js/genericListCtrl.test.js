@@ -34,18 +34,20 @@ describe('GenericListCtrl', function () {
     describe('SelectCtrl', function() {
 
       it('Selecting a show from showsPropertiesOfInterest list, it should disapear from this list', function () {
-        httpBackend.expectGET('/programs');
+        $httpBackend.expectGET('/programs');
         var controller = createController();
         $httpBackend.flush();
         var scope=$rootScope;
-        expect(scope.data.showsPropertiesOfInterest.length).toBe(3);
+        var ini_length = scope.data.showsPropertiesOfInterest.length;
+        //expect(scope.data.showsPropertiesOfInterest.length).toBe(3); 
+        var title0 = scope.data.showsPropertiesOfInterest[0].title;
         scope.select(scope.data.showsPropertiesOfInterest[0]);
         scope.$digest();
-        expect(scope.data.showsPropertiesOfInterest.length).toBe(2);
-        expect(scope.data.showsPropertiesOfInterest[0].title).toEqual("LegiÃ£o Estrangeira");
+        expect(scope.data.showsPropertiesOfInterest.length).toBe(ini_length - 1);
+        expect(scope.data.showsPropertiesOfInterest[0].title).not.toEqual(title0);
         scope.select(scope.data.showsPropertiesOfInterest[1]);
         scope.$digest();
-        expect(scope.data.showsPropertiesOfInterest.length).toBe(1);
+        expect(scope.data.showsPropertiesOfInterest.length).toBe(ini_length - 2);
       });
 
       it('Selecting a show from showsPropertiesOfInterest list, it should be in the last position of markedShows list', function () {
@@ -53,12 +55,12 @@ describe('GenericListCtrl', function () {
         var controller = createController();
         $httpBackend.flush();
         var scope=$rootScope;
-
+        var ini_length = scope.data.showsPropertiesOfInterest.length;
         var temp=scope.data.showsPropertiesOfInterest[0];
         scope.select(scope.data.showsPropertiesOfInterest[0]);
 
         scope.$digest();
-        expect(scope.data.showsPropertiesOfInterest.length).toBe(2);
+        expect(scope.data.showsPropertiesOfInterest.length).toBe(ini_length - 1);
 
         expect(scope.data.markedShows.length).toBe(1);
 
@@ -112,6 +114,7 @@ describe('GenericListCtrl', function () {
         var controller = createController();
         $httpBackend.flush();
         var scope=$rootScope;
+        var ini_length = scope.data.showsPropertiesOfInterest.length;
         scope.select(scope.data.showsPropertiesOfInterest[0]);
         scope.$digest();
         scope.select(scope.data.showsPropertiesOfInterest[0]);
@@ -124,9 +127,10 @@ describe('GenericListCtrl', function () {
         scope.unSelect(scope.data.markedShows[2]);
 
         scope.$digest();
+
         expect(scope.data.markedShows.length).toBe(2);
 
-        expect(scope.data.showsPropertiesOfInterest.length).toBe(1);
+        expect(scope.data.showsPropertiesOfInterest.length).toBe(ini_length - 2);
 
         expect(scope.data.showsPropertiesOfInterest[0]).toBe(temp);
       });
@@ -136,7 +140,6 @@ describe('GenericListCtrl', function () {
         var controller = createController();
         $httpBackend.flush();
         var scope=$rootScope;
-
         var e1 = scope.data.showsPropertiesOfInterest[0];
         var e2 = scope.data.showsPropertiesOfInterest[1];
         var e3 = scope.data.showsPropertiesOfInterest[2];
