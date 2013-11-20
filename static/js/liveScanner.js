@@ -31,7 +31,7 @@ ShowsArray.prototype.filterByPattern = function(condition, pattern) {
 
 ShowsArray.prototype.sortByProperty = function(property) {
   this.sort(function(showA, showB) {
-    return showA[property].toLowerCase() > showB[property].toLowerCase();
+    return showA[property].toLowerCase() > showB[property].toLowerCase() ? 1 : -1;
   });
   return this;
 };
