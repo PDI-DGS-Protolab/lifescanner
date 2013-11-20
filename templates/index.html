@@ -8,11 +8,10 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-mocks.js"></script>
         <script src="../static/js/liveScanner.js"></script>
-        <!--{{ references }}-->
+        {% autoescape off %}
+            {{ references }}
+        {% endautoescape %}
 
-        <script src='{{reference1}}'></script>
-        <script src='{{reference2}}'></script>
-        
         <link rel="stylesheet" type="text/css" href="../static/css/header.css">
         <link rel="stylesheet" type="text/css" href="../static/css/shows.css">
 

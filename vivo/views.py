@@ -16,8 +16,7 @@ def index(request):
     #return render(request, 'index.html', tmp)
     content = {
         'versionApp' : 'liveScannerApp',
-        'reference1' : '',
-        'reference2' : '',
+        'references' : '',
     }
     return render(request, 'index.html', content)
     #return render_to_response('index.html', content)
@@ -29,8 +28,7 @@ def indexDev(request):
     #return render(request, 'index.html', tmp)
     content = {
         'versionApp' : 'liveScannerDev',
-        'reference1' : '../static/js/liveScannerDev.js',
-        'reference2' : '../static/js/data.js',
+        'references' : '<script src=' '"../static/js/liveScannerDev.js"' '></script> <script src=' '"../static/js/data.js"' '></script>',
     }
     return render_to_response('index.html', content)
 
