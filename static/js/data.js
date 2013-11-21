@@ -29,6 +29,64 @@ function getData(){
       "synopsis" : [ ]
     }
   }, {
+    "id" : 13215,
+    "title" : "Encontro com Deus na Test",
+    "description" : "This is only a text into the description in dev mode",
+    "start" : 1380684600000,
+    "end" : 1380704400000,
+    "duration" : 330,
+    "channel" : {
+      "name" : "Rede Gospel",
+      "abbrev" : "GOS",
+      "logo" : "http://img.tvstar.com.br/channel/GOS.jpg",
+      "fibraLineup" : "21"
+    },
+    "content" : {
+      "idShow" : 3987,
+      "title" : "Encontro com Deus na Test",
+      "description" : "This is only a text into the description in dev mode",
+      "slug" : "encontro-com-deus-na-madrugada",
+      "type" : "Variedades",
+      "genre" : "ReligiÃ£o",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 1390,
+        "url" : "http://2",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  }, {
+    "id" : 19875,
+    "title" : "Encontro com Deus na Test v2",
+    "description" : "This is only a text into the description in dev mode",
+    "start" : 1380684600000,
+    "end" : 1380704400000,
+    "duration" : 330,
+    "channel" : {
+      "name" : "Rede Gospel",
+      "abbrev" : "GOS",
+      "logo" : "http://img.tvstar.com.br/channel/GOS.jpg",
+      "fibraLineup" : "21"
+    },
+    "content" : {
+      "idShow" : 3987,
+      "title" : "Encontro com Deus na Test v2",
+      "description" : "This is only a text into the description in dev mode",
+      "slug" : "encontro-com-deus-na-madrugada",
+      "type" : "Variedades",
+      "genre" : "ReligiÃ£o",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 1390,
+        "url" : "http://2",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  }, {
     "id" : 15279,
     "title" : "SessÃ£o PlenÃ¡ria",
     "description" : "A atividade legislativa do Senado Federal se dÃ¡ principalmente por meio de reuniÃµes das comissÃµes e sessÃµes plenÃ¡rias. Para saber mais: www.senado.gov.br/tv",
@@ -85,6 +143,64 @@ function getData(){
       "images" : [ {
         "id" : 5205,
         "url" : "http://5",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  }, {
+    "id" : 19075,
+    "title" : "Encontro com Deus na Test v3",
+    "description" : "This is only a text into the description in dev mode",
+    "start" : 1380684600000,
+    "end" : 1380704400000,
+    "duration" : 330,
+    "channel" : {
+      "name" : "Rede Gospel",
+      "abbrev" : "GOS",
+      "logo" : "http://img.tvstar.com.br/channel/GOS.jpg",
+      "fibraLineup" : "21"
+    },
+    "content" : {
+      "idShow" : 3987,
+      "title" : "Encontro com Deus na Test v3",
+      "description" : "This is only a text into the description in dev mode",
+      "slug" : "encontro-com-deus-na-madrugada",
+      "type" : "Variedades",
+      "genre" : "ReligiÃ£o",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 1390,
+        "url" : "http://2",
+        "width" : 0,
+        "height" : 0
+      } ],
+      "synopsis" : [ ]
+    }
+  }, {
+    "id" : 19875,
+    "title" : "Encontro com Deus na Dev mode",
+    "description" : "This is only a text into the description in dev mode",
+    "start" : 1380684600000,
+    "end" : 1380704400000,
+    "duration" : 330,
+    "channel" : {
+      "name" : "Rede Gospel",
+      "abbrev" : "GOS",
+      "logo" : "http://img.tvstar.com.br/channel/GOS.jpg",
+      "fibraLineup" : "21"
+    },
+    "content" : {
+      "idShow" : 3987,
+      "title" : "Encontro com Deus na Dev mode",
+      "description" : "This is only a text into the description in dev mode",
+      "slug" : "encontro-com-deus-na-madrugada",
+      "type" : "Variedades",
+      "genre" : "ReligiÃ£o",
+      "rating" : "Programa livre para todas as idades",
+      "images" : [ {
+        "id" : 1390,
+        "url" : "http://2",
         "width" : 0,
         "height" : 0
       } ],
