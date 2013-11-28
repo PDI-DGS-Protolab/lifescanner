@@ -28,7 +28,7 @@ def indexDev(request):
     #return render(request, 'index.html', tmp)
     content = {
         'versionApp' : 'liveScannerDev',
-        'references' : '<script src=' '"../static/js/liveScannerDev.js"' '></script> <script src=' '"../static/js/data.js"' '></script>',
+        'references' : '<script src=' '"../static/js/liveScannerDev.js"' '></script> <script src=' '"../static/js/data.js"' '></script><script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-mocks.js"></script>',
     }
     return render_to_response('index.html', content)
 
