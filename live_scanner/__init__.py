@@ -13,11 +13,11 @@ def create_admin(app, created_models, verbosity, **kwargs):
 	if settings.DEBUG:
 		try:
 			auth_models.User.objects.get(username='admin')
-			except auth_models.User.DoesNotExist:
-				print '*' * 80
-				print 'Creating admin user -- login: admin, password: password'
-				print '*' * 80
-				assert auth_models.User.objects.create_superuser('admin', 'admin@example.com', 'password')
+		except auth_models.User.DoesNotExist:
+			print '*' * 80
+			print 'Creating admin user -- login: admin, password: password'
+			print '*' * 80
+			assert auth_models.User.objects.create_superuser('admin', 'admin@example.com', 'password')
 		else:
 			print 'Admin user "admin" already exists.'
 
