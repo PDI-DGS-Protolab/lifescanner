@@ -28,5 +28,5 @@ RUN apt-get install -y git-core
 RUN git clone https://github.com/PDI-DGS-Protolab/live_scanner
 
 # setup database and start app
-ENTRYPOINT cd live_scanner && python manage.py syncdb --noinput && python manage.py runserver 0.0.0.0:8000
+ENTRYPOINT cd live_scanner && python manage.py syncdb --noinput && echo $VARIABLE && python manage.py runserver 0.0.0.0:8000
 
